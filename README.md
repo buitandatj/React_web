@@ -10,6 +10,7 @@
 
 # TIMELINE
 
+- Link: 'https://docs.google.com/spreadsheets/d/1CA7bO-1wN_jkIIZQiTY9Yu5folI2NnGESLbL_x5ECBI/edit?usp=sharing'
 - Thời gian hoàn thành ước tính: 1 tháng
 - Thời gian hoàn thành:
 
@@ -23,8 +24,6 @@
 - Có các chức năng Thêm Sửa Xóa và Search, Filter
 - Sử dụng router, axios
 - Deploy web bằng vercel
-
-
 
 # STEP TO STEP GUIDE TO INSTALL AND RUN
 
