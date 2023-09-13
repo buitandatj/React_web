@@ -1,0 +1,39 @@
+.header {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .container-header {
+        display: flex;
+        align-items: center;
+        width: 1170px;
+        justify-content: space-between;
+
+        .logo img {
+            width: 85px;
+            min-height: 70px;
+        }
+
+        .menu ul {
+            margin-right: 50px;
+            display: flex;
+            gap: 80px;
+
+            a {
+                color: #615959;
+                font-size: 1.2rem;
+            }
+        }
+
+        .cart {
+            cursor: pointer;
+
+            .svg-ico-cart {
+                height: 27px;
+                width: 27px;
+            }
+
+        }
+    }
+}
