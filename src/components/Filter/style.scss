@@ -1,0 +1,66 @@
+@import '../Search/style.scss';
+
+.filter {
+    margin-top: 40px;
+    position: relative;
+    z-index: 0;
+
+    .title {
+
+        display: flex;
+        justify-content: space-between;
+
+        h1 {
+            font-size: 1.7rem;
+        }
+
+        .toggle-filter {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            outline: none;
+            border: 1px solid $color-boder;
+            width: 150px;
+            cursor: pointer;
+
+            .icon-toggle {
+                color: $color-boder;
+            }
+
+
+        }
+
+        :hover {
+            .list-arrange {
+                display: block;
+            }
+        }
+
+    }
+
+
+    .list-arrange {
+        width: 150px;
+        min-height: 100px;
+        display: none;
+        position: absolute;
+        background-color: white;
+        padding: 10px 15px;
+        margin-top: 4px;
+        right: 0;
+        top: 38px;
+        z-index: 1;
+
+        div {
+            cursor: pointer;
+            border-bottom: 2px solid black;
+            padding: 3px;
+
+        }
+
+        :last-child {
+            border-bottom: none;
+        }
+    }
+
+}
