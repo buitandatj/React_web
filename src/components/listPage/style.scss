@@ -1,0 +1,26 @@
+.right-heade {
+    margin-top: 15px;
+    line-height: 2rem;
+
+    .right-title {
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .right-menu {
+        padding-top: 2rem;
+    }
+
+    .img-right {
+        padding-top: 2.5rem;
+        overflow: hidden;
+
+        img {
+            transition: transform 0.20s;
+        }
+
+        :hover {
+            transform: scale(1.2);
+        }
+    }
+}
