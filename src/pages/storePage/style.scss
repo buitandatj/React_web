@@ -1,0 +1,55 @@
+.container-store {
+    margin-top: 2.5rem;
+
+    .heade-store {
+        display: flex;
+        justify-content: space-between;
+
+        .left-store {
+            font-size: 1.9rem;
+            font-weight: 600;
+        }
+
+        .video {
+            margin-top: 2.5rem;
+        }
+
+        
+        }
+    }
+
+    .address-store {
+        margin-top: 5.5rem;
+        display: flex;
+        flex-direction: column;
+
+        .address {
+            display: flex;
+            font-weight: 600;
+            font-size: 18px;
+            padding: 20px 180px;
+            align-items: center;
+        }
+    }
+
+    .contact-store {
+        width: 800px;
+        margin: 4rem 0 ;
+
+        p {
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        ul {
+            line-height: 50px;
+            margin: 0 20px;
+
+            li {
+                list-style: circle;
+                a {
+                    color: #484444;
+                }
+            }
+        }
+    }
