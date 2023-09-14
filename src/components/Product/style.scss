@@ -1,0 +1,37 @@
+@import '../Search/style.scss';
+
+.product {
+    margin-top: 20px;
+    width: 230px;
+    height: 312px;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+
+    img {
+        width: 100%;
+    }
+
+    .title-name {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .price {
+        text-align: center;
+        color: red;
+    }
+
+    .add-cart {
+        display: flex;
+        gap: 18px;
+        padding: 10px;
+
+        button {
+            font-size: 0.8rem;
+            cursor: pointer;
+            padding: 4px;
+            border: 1px solid $color-boder;
+        }
+    }
+}
