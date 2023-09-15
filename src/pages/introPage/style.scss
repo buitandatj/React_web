@@ -1,0 +1,41 @@
+.container-intro {
+    margin-top: 2.5rem;
+
+    .heade-intro {
+        display: flex;
+        justify-content: space-between;
+
+        .left-intro {
+            font-size: 1.9rem;
+            font-weight: 600;
+        }
+
+        .img-intro {
+            margin-top: 2.5rem;
+        }
+
+        .text-intro {
+            padding-top: 10px;
+            max-width: 900px;
+            font-size: 17px;
+        }
+
+
+    }
+
+    .bottom-intro {
+        margin: 4rem 0;
+
+        h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 35px;
+            color: rgb(111, 117, 117);
+        }
+    }
+}
