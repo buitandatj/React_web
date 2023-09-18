@@ -1,11 +1,32 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
+import Header from './components/Header/Header';
+import HomePage from './pages/homePage/HomePage';
+import Footer from './components/Footer/Footer';
+import { Routes, Route } from 'react-router-dom'
+import Cart from './pages/cartPage/Cart';
+import Products from './pages/producPage/Products';
+import ProductDetails from './pages/productDetailPage/ProductDetails';
+import Store from './pages/storePage/Store';
+import Intro from './pages/introPage/Intro';
+
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <>
+      <div className="App">
+        <Header />
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='products' element={<Products />} />
+          <Route path='/products/:id' element={<ProductDetails />} />
+          <Route path='store' element={<Store />} />
+          <Route path='intro' element={<Intro />} />
+          <Route path='cart' element={<Cart />} />
+        </Routes>
+      </div>
+      <Footer />
+    </>
   );
 }
 
