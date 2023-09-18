@@ -7,6 +7,7 @@
 - [React (^18.2.0)](https://reactjs.org/) - Nó là một thư viện của Javascript để xây dựng giao diện người dùng
 - [Typescript](https://www.typescriptlang.org/) - Typescrpit là một phiên bản nâng cao hơn của Javascript, nó có tính chặt chẽ hơn.
 - [Sass(^1.66.1)] - là một ngôn ngữ mở rộng hơn của css, có tính ổn định và mạnh mẽ
+- [tailwindcss(3.3.3)] - là một framework css
 
 # TIMELINE
 
@@ -14,6 +15,9 @@
 - Thời gian hoàn thành ước tính: 1 tháng
 - Thời gian hoàn thành:
 
+
+# BASED
+- Link: 'https://degrey.vn/collections/tat-ca-san-pham'
 # TIME SIZE
 
 - 1 người
