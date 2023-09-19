@@ -4,3 +4,6 @@ export const facebook ="https://www.facebook.com/degrey.saigon"
 export const insta ="https://www.instagram.com/degrey.saigon/"
 export const tiktok = "https://www.tiktok.com/@degrey.vn"
 export const shoppe = "https://shopee.vn/degrey.vn"
+export const congthuong='http://online.gov.vn/Home/WebDetails/104783'
+
+
