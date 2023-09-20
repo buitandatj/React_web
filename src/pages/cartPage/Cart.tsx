@@ -7,14 +7,14 @@ const Cart = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-    const { cart }: any | IState[] = useContext(CartContext);
+    const { cart }: { cart: IState[] } = useContext(CartContext);
     return (
         <div className='container-cart'>
             <div className='cart'>
                 <h4 className='title-cart'>Giỏ hàng của bạn</h4>
                 <div>Có {cart.length} sản phẩm</div>
                 <div className='table-cart'>
-                    {cart.map((item: IState | any) => {
+                    {cart.map((item: IState) => {
                         return (
                             <CartItem item={item} key={item.id} />
                         )

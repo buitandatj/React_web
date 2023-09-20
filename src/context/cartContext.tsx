@@ -1,12 +1,25 @@
 import React, { useState, createContext } from 'react';
 import { IState } from './productContext';
 
-export const CartContext = createContext({});
+export interface ICart {
+  cart: IState[];
+  addToCart: (id: number | any, product: IState) => void;
+  deleteItemCart: (id: number) => void;
+}
+export const CartContext = createContext<ICart>({
+  cart: [],
+  addToCart: function (id: number, product: IState): {} {
+    throw new Error('Function not implemented.');
+  },
+  deleteItemCart: function (id: number): {} {
+    throw new Error('Function not implemented.');
+  }
+});
 
 const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cart, setCart] = useState<IState[]>([]);
 
-  const addToCart = (product: IState, id: number) => {
+  const addToCart = (id: number, product: IState) => {
     const newProduct = { ...product, mount: 1 }
     const cartItem = cart.find((item) => {
       return item.id === id

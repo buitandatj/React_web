@@ -3,14 +3,14 @@ import { AiFillSecurityScan } from 'react-icons/ai';
 import { FaTruck } from 'react-icons/fa';
 import { IState, ProductContext } from '../../context/productContext'
 import { useParams } from 'react-router-dom';
-import { CartContext } from '../../context/cartContext';
+import { CartContext, ICart } from '../../context/cartContext';
 
 const ProductDetail = () => {
 
     const { id } = useParams();
     const { products }: { products: IState[] } = useContext(ProductContext)
-    const { addToCart }: any = useContext(CartContext)
-    const productItem = products.find((item: { id: number | undefined; }) => {
+    const { addToCart }: ICart = useContext(CartContext)
+    const productItem: IState | any = products.find((item: { id: number | undefined; }) => {
         return item.id === id
     })
     return (
@@ -21,7 +21,7 @@ const ProductDetail = () => {
             <div className='product-left'>
                 <h2 className='title-product'>{productItem?.title}</h2>
                 <div className='price-product'>{productItem?.price}đ</div>
-                <div className='btn-add-cart' onClick={() => addToCart(productItem, id)}>
+                <div className='btn-add-cart' onClick={() => addToCart(id, productItem)}>
                     <button>thêm vào giỏ</button>
                 </div>
                 <div className='info-product'>

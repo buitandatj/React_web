@@ -5,7 +5,7 @@ import { IState, ProductContext } from '../../context/productContext';
 
 const Search = () => {
     const { products }: { products: IState[] } = useContext(ProductContext)
-    const { setProducts }: any = useContext(ProductContext)
+    // const { setProducts } = useContext(ProductContext)
     const [search, setSearch] = useState('')
 
     useEffect(()=>{
