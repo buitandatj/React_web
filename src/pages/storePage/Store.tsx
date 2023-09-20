@@ -3,8 +3,12 @@ import { FaMapMarkerAlt } from 'react-icons/fa'
 import ListPage from '../../components/listPage/ListPage';
 import { video, map, facebook, tiktok, insta, shoppe } from '../../constants/Constants';
 import Iframe from 'react-iframe'
+import { useEffect } from 'react';
 
 const Store = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <div className='container-store '>
             <div className='heade-store'>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './style.scss';
 import ListPage from '../../components/listPage/ListPage';
 import img from '../../assets/images/img-intro.webp';
@@ -6,7 +6,7 @@ import img2 from '../../assets/images/img-intro-2.webp';
 import img3 from '../../assets/images/img-intro-3.webp';
 import img4 from '../../assets/images/img-intro-4.webp';
 import img5 from '../../assets/images/img-intro-5.webp';
-const IntroImg = [
+const listsMain = [
     {
         id: 1,
         img: img,
@@ -38,20 +38,23 @@ const IntroImg = [
 
 
 const Intro = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
     return (
         <div className='container-intro'>
             <div className='heade-intro'>
                 <div>
                     <div className='left-intro '>Degrey is us - DGSUS </div>
                     <div>
-                        {IntroImg.map(e => (
-                            <div key={e.id}>
+                        {listsMain.map(list => (
+                            <div key={list.id}>
                                 <div className='img-intro'>
-                                    <img width={900} height={500} src={e.img} alt={e.title} />
+                                    <img width={900} height={500} src={list.img} alt={list.title} />
                                 </div>
                                 <div className='text-intro'>
                                     <p>
-                                        {e.title}
+                                        {list.title}
                                     </p>
                                 </div>
                             </div>

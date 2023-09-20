@@ -3,12 +3,14 @@ import OwlCarousel from "react-owl-carousel";
 import "owl.carousel/dist/assets/owl.carousel.css";
 import "owl.carousel/dist/assets/owl.theme.default.css";
 import './style.scss';
+import banner1 from '../../assets/images/images_banner/banner_slider_1.webp';
+import banner2 from '../../assets/images/images_banner/banner_slide_2.webp';
+import banner3 from '../../assets/images/images_banner/banner_slider_3.webp';
 
 
 const MyOwlCarousel = () => {
   const options = {
     loop: true,
-    margin: 10,
     items: 1,
     autoplay: true
   };
@@ -17,19 +19,19 @@ const MyOwlCarousel = () => {
     <OwlCarousel className="owl-theme" {...options} >
       <div className="item">
         <img
-          src="https://file.hstatic.net/1000281824/file/16_9469423570d04edc87abccc64a86c8c5.png"
+          src={banner1}
           alt="road"
         />
       </div>
       <div className="item">
         <img
-          src="https://file.hstatic.net/1000281824/file/7_dfa0047c816746de854f38a0160c455c.png"
+          src={banner2}
           alt="sunrise"
         />
       </div>
       <div className="item">
         <img
-          src="https://file.hstatic.net/1000281824/file/12_6d5024ccf885476b8e92ae8c954d500f.png"
+          src={banner3}
           alt="road2"
         />
       </div>

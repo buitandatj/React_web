@@ -3,13 +3,20 @@
 .product {
     margin-top: 20px;
     width: 230px;
-    height: 312px;
+    min-height: 312px;
     align-items: center;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 
-    img {
+    .image-product {
         width: 100%;
+        transform: scale(1);
+        transition: all 2s;
+        overflow: hidden;
+
+        :hover {
+            transform: scale(1.1);
+        }
     }
 
     .title-name {
@@ -34,4 +41,6 @@
             border: 1px solid $color-boder;
         }
     }
+
+
 }

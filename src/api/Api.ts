@@ -4,12 +4,12 @@ export const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL
 });
 
-export const myAxios = async (url: string, method: Method, body?: IState) => {
+export const myAxios = async (url: string, method: Method, param?: object, body?: IState) => {
   try {
     let data;
     switch (method) {
       case 'GET':
-        data = await instance.get(url);
+        data = await instance.get(url, param);
         break;
       case 'POST':
         data = await instance.post(url, body);
