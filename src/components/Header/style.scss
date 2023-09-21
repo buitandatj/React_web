@@ -4,14 +4,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 1170px;
     position: relative;
+    width: 100%;
+
 
     .container-header {
         display: flex;
         align-items: center;
-        min-width: 1170px;
+        width: 1170px;
         justify-content: space-between;
+        position: fixed;
 
         .logo img {
             width: 85px;
@@ -57,8 +59,37 @@
                     color: black;
                     border-bottom: 1px solid #191c1d;
                 }
-
             }
         }
+
+        .cart {
+            display: flex;
+            position: relative;
+
+            :hover {
+                .icon-cart {
+                    color: #000;
+                }
+            }
+
+            .total-cart {
+                background-color: red;
+                width: 17px;
+                height: 17px;
+                border-radius: 99px;
+                font-size: 0.8rem;
+                color: #ffffff;
+
+                .length {
+                    text-align: center;
+                }
+            }
+
+
+        }
     }
+
+
+
+
 }

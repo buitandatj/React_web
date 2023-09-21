@@ -10,8 +10,8 @@ import { CartContext } from '../../context/cartContext';
 const Header = () => {
     const { cart }: any | IState[] = useContext(CartContext);
     return (
-        <header className='header '>
-            <nav className='container-header block fixed bg-white h-[90px]'>
+        <header className='header block fixed'>
+            <nav className='container-header   bg-white h-[90px]'>
                 <div className='logo'>
                     <Link to="/">
                         <img src={logo} alt="logo" />
@@ -28,8 +28,12 @@ const Header = () => {
 
                 <div className='cart '>
                     <Link to="/cart " className='flex'>
-                        <FaCartShopping className='h-[27px] w-[27px]' />
-                        <div>({cart.length})</div>
+                        <FaCartShopping className='h-[27px] w-[27px] icon-cart' />
+                        <div className='total-cart'>
+                            <p className='length'>
+                                {cart.length}
+                            </p>
+                        </div>
                     </Link>
                 </div>
             </nav>

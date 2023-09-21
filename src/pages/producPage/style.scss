@@ -1,5 +1,12 @@
-.products{
+.products {
     display: flex;
     flex-wrap: wrap;
-    gap:5px;
+    gap: 5px;
+}
+
+.reace-paginate {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    margin-top: 2rem;
 }

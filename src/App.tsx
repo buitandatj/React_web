@@ -8,6 +8,7 @@ import Products from './pages/producPage/Products';
 import ProductDetailsPage from './pages/productDetailPage/ProductDetailsPage';
 import Store from './pages/storePage/Store';
 import Intro from './pages/introPage/Intro';
+import { ToastContainer } from 'react-toastify';
 
 
 function App() {
@@ -15,13 +16,15 @@ function App() {
     <>
       <div className="App">
         <Header />
+        <ToastContainer />
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='products' element={<Products />} />
           <Route path='/products/:id' element={<ProductDetailsPage />} />
           <Route path='store' element={<Store />} />
           <Route path='intro' element={<Intro />} />
-          <Route path='cart' element={<Cart />} />
+          <Route path='cart' element={<Cart />} >
+          </Route>
         </Routes>
       </div>
       <Footer />

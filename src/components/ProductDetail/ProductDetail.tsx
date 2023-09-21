@@ -4,7 +4,7 @@ import { FaTruck } from 'react-icons/fa';
 import { IState, ProductContext } from '../../context/productContext'
 import { useParams } from 'react-router-dom';
 import { CartContext, ICart } from '../../context/cartContext';
-
+import { formatPrice } from '../CartItem/CartItem'
 const ProductDetail = () => {
 
     const { id } = useParams();
@@ -20,7 +20,7 @@ const ProductDetail = () => {
             </div>
             <div className='product-left'>
                 <h2 className='title-product'>{productItem?.title}</h2>
-                <div className='price-product'>{productItem?.price}đ</div>
+                <div className='price-product'>{formatPrice(productItem?.price)}</div>
                 <div className='btn-add-cart' onClick={() => addToCart(id, productItem)}>
                     <button>thêm vào giỏ</button>
                 </div>

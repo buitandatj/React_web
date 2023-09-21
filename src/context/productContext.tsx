@@ -1,6 +1,8 @@
 import React, { useState, useEffect, createContext } from 'react';
 import { myAxios } from '../api/Api';
 
+
+
 export interface IState {
   id: number;
   title: string;
@@ -19,12 +21,13 @@ export const ProductContext = createContext<IProduct>({ products: [], setProduct
 const ProductProvider = ({ children }: { children: React.ReactNode }) => {
   const [products, setProducts] = useState<IState[]>([]);
 
+
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await myAxios('products', 'GET');
         setProducts(response);
-
       } catch (error) {
         console.log(error);
       }

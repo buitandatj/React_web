@@ -5,26 +5,29 @@ import { Link } from 'react-router-dom';
 import { CartContext } from '../../context/cartContext';
 
 
-const CartItem = ({ item }: IState[] | any) => {
+export const formatPrice = (price: number) => {
+    return price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+};
+const CartItem = ({ item }: { item: IState }) => {
+    const { deleteItemCart, increaseMount, decreaseMount }: any = useContext(CartContext)
+    // const { id, title, image, mount, price }: IState[] = item
 
-    const { deleteItemCart }: any = useContext(CartContext)
-    const { id, title, image, mount, price } = item
     return (
         <div className='item-cart'>
             <div className='item-left'>
-                <img src={image} alt={title} />
-                <Link to={`/products/${id}`}><p>{title}</p></Link>
+                <img src={item.image} alt={item.title} />
+                <Link to={`/products/${item.id}`}><p>{item.title}</p></Link>
             </div>
             <div className='item-right'>
 
-                <p>{price}</p>
+                <p>{formatPrice(item.price * item.mount)}</p>
                 <div className='right-child'>
-                    <button>-</button>
-                    <input type="text" min={1} value={mount} />
-                    <button>+</button>
+                    <div onClick={() => decreaseMount(item.id)}><button>-</button></div>
+                    <div>{item.mount}</div>
+                    <div onClick={() => increaseMount(item.id)}><button>+</button></div>
                 </div>
             </div>
-            <button className='delete-item' onClick={()=>deleteItemCart(id)}><FaDeleteLeft /></button>
+            <button className='delete-item' onClick={() => deleteItemCart(item.id)}><FaDeleteLeft /></button>
         </div>
     );
 };

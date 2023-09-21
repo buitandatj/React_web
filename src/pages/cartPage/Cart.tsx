@@ -1,13 +1,23 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './style.scss';
 import { CartContext } from '../../context/cartContext';
 import { IState } from '../../context/productContext';
-import CartItem from '../../components/CartItem/CartItem';
+import CartItem, { formatPrice } from '../../components/CartItem/CartItem';
 const Cart = () => {
+    const { cart }: { cart: IState[] } = useContext(CartContext);
+    const [total, setTotal] = useState(0)
+    useEffect(() => {
+        const total = cart.reduce((total, num) => {
+            return total + num.price * num.mount
+        }, 0)
+        setTotal(total)
+    }, [cart])
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-    const { cart }: { cart: IState[] } = useContext(CartContext);
+
+
     return (
         <div className='container-cart'>
             <div className='cart'>
@@ -22,7 +32,7 @@ const Cart = () => {
                 </div>
                 <div className='note'>
                     <p>Ghi chú đơn hàng</p>
-                    <textarea className="form-control" name="note" rows={5}></textarea>
+                    <textarea className="form-control" name="note" rows={6}></textarea>
                 </div>
             </div>
             <div className='information'>
@@ -30,19 +40,21 @@ const Cart = () => {
                 <hr />
                 <div className='total'>
                     <p className='title-total'>Tổng tiền:</p>
-                    <span className='price-total'>595000đ</span>
+                    <span className='price-total'>{formatPrice(total)}</span>
                 </div>
                 <hr />
                 <div className='action'>
                     <li>Phí vận chuyển sẽ được tính ở trang thanh toán.</li>
                     <li>Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</li>
                 </div>
-                <div className='btn-cart'>
-                    <button>THANH TOÁN</button>
-                </div>
+                <Link to='/'>
+                    <div className='btn-cart'>
+                        <button>THANH TOÁN</button>
+                    </div>
+                </Link>
                 <div className='warning'>
                     <p className='warning-title'>Chính sách giao hàng</p>
-                    <p>Hiện chúng tôi chỉ áp dụng thanh toán với đơn hàng có giá trị tối thiểu <span>150.000₫</span> trở lên.</p>
+                    <p>Hiện chúng tôi chỉ áp dụng thanh toán với đơn hàng có giá trị tối thiểu <span>250.000₫</span> trở lên.</p>
                 </div>
             </div>
 
