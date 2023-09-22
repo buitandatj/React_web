@@ -7,15 +7,15 @@ import Cart from './pages/cartPage/Cart';
 import Products from './pages/producPage/Products';
 import ProductDetailsPage from './pages/productDetailPage/ProductDetailsPage';
 import Store from './pages/storePage/Store';
-import Intro from './pages/introPage/Intro';
+import Intro from './pages/aboutPage/About';
 import { ToastContainer } from 'react-toastify';
 
 
 function App() {
   return (
     <>
+      <Header />
       <div className="App">
-        <Header />
         <ToastContainer />
         <Routes>
           <Route path='/' element={<HomePage />} />
