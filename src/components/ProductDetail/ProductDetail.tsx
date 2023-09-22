@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
 import { AiFillSecurityScan } from 'react-icons/ai';
 import { FaTruck } from 'react-icons/fa';
-import { IState, ProductContext } from '../../context/productContext'
+import { ProductContext } from '../../context/productContext'
 import { useParams } from 'react-router-dom';
-import { CartContext, ICart } from '../../context/cartContext';
 import { formatPrice } from '../CartItem/CartItem'
+import { IProducts } from '../../type/IProducts';
+import useCart from '../../helper/useCart';
 const ProductDetail = () => {
-
+    const { AddToCart } = useCart()
     const { id } = useParams();
-    const { products }: { products: IState[] } = useContext(ProductContext)
-    const { addToCart }: ICart = useContext(CartContext)
-    const productItem: IState | any = products.find((item: { id: number | undefined; }) => {
+    const { products }: { products: IProducts[] } = useContext(ProductContext)
+    const productItem: IProducts | undefined = products.find((item: { id: number | undefined; }) => {
         return item.id === id
     })
     return (
@@ -20,10 +20,17 @@ const ProductDetail = () => {
             </div>
             <div className='product-left'>
                 <h2 className='title-product'>{productItem?.title}</h2>
-                <div className='price-product'>{formatPrice(productItem?.price)}</div>
-                <div className='btn-add-cart' onClick={() => addToCart(id, productItem)}>
-                    <button>thêm vào giỏ</button>
-                </div>
+
+                {
+                    productItem ? (
+                        <>
+                            <div className='price-product'>{formatPrice(productItem?.price)}</div>
+                            <div className='btn-add-cart' onClick={() => AddToCart(productItem)}>
+                                <button>thêm vào giỏ</button>
+                            </div>
+                        </>
+                    ) : null
+                }
                 <div className='info-product'>
                     <div>Thông tin sản phẩm</div>
                     <p>- {productItem?.descip}</p>
