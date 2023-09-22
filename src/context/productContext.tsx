@@ -1,25 +1,13 @@
 import React, { useState, useEffect, createContext } from 'react';
 import { myAxios } from '../api/Api';
-
-
-
-export interface IState {
-  id: number;
-  title: string;
-  descip: string;
-  image: string;
-  price: number;
-  mount: number;
-}
-
+import { IProducts } from '../type/IProducts';
 interface IProduct {
-  products: IState[];
-  setProducts: any;
+  products: IProducts[];
 }
-export const ProductContext = createContext<IProduct>({ products: [], setProducts: [] });
+export const ProductContext = createContext<IProduct>({ products: [] });
 
 const ProductProvider = ({ children }: { children: React.ReactNode }) => {
-  const [products, setProducts] = useState<IState[]>([]);
+  const [products, setProducts] = useState<IProducts[]>([]);
 
 
 
@@ -34,7 +22,7 @@ const ProductProvider = ({ children }: { children: React.ReactNode }) => {
     };
     fetchProducts();
   }, []);
-  return <ProductContext.Provider value={{ products, setProducts }}>{children}</ProductContext.Provider>
+  return <ProductContext.Provider value={{ products }}>{children}</ProductContext.Provider>
 };
 
 export default ProductProvider;
