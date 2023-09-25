@@ -1,7 +1,7 @@
 import './style.scss';
 import { FaMapMarkerAlt } from 'react-icons/fa'
 import ListPage from '../../components/listPage/ListPage';
-import { video, map, facebook, tiktok, insta, shoppe } from '../../constants/Constants';
+import { video, map, facebook, tiktok, insta, shoppe } from '../../constants/MediaLink';
 import Iframe from 'react-iframe'
 import { useEffect } from 'react';
 

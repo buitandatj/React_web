@@ -1,16 +1,14 @@
-import { useContext } from 'react';
-import { IState } from '../../context/productContext';
 import './style.scss';
 import { Link } from 'react-router-dom';
-import { CartContext, ICart } from '../../context/cartContext';
 import { formatPrice } from '../CartItem/CartItem';
 import 'react-toastify/dist/ReactToastify.css';
+import { IProducts } from '../../type/IProducts';
+import useCart from '../../helper/useCart';
 
 
-const Product = ({ product }: { product: IState }) => {
-   
+const Product = ({ product }: { product: IProducts }) => {
+    const { AddToCart } = useCart();
     const { id, title, image, price } = product
-    const { addToCart }: ICart = useContext(CartContext)
     return (
         <>
             <div key={id} className='product'>
@@ -26,10 +24,10 @@ const Product = ({ product }: { product: IState }) => {
                     <p>{formatPrice(price)}</p>
                 </div>
                 <div className='add-cart'>
-                    <button onClick={() => addToCart(id, product)}>Thêm vào giỏ</button>
+                    <button onClick={() => AddToCart(product)}>Thêm vào giỏ</button>
                     <Link to={`${id}`}><button >Xem chi tiết</button></Link>
                 </div>
-              
+
             </div>
         </>
 

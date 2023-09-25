@@ -1,10 +1,10 @@
 import axios, { Method } from 'axios';
-import { IState } from '../context/productContext';
+import { IProducts } from '../type/IProducts';
 export const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL
 });
 
-export const myAxios = async (url: string, method: Method, param?: object, body?: IState) => {
+export const myAxios = async (url: string, method: Method, param?: object, body?: IProducts) => {
   try {
     let data;
     switch (method) {

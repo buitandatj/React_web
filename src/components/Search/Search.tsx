@@ -1,31 +1,40 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.scss';
 import { AiOutlineSearch } from 'react-icons/ai';
-import { IState, ProductContext } from '../../context/productContext';
+import { useSearchParams } from 'react-router-dom';
 
 const Search = () => {
-    const { products }: { products: IState[] } = useContext(ProductContext)
-    const { setProducts } = useContext(ProductContext)
-    const [search, setSearch] = useState('')
 
+    const [search, setSearch] = useState('')
+    const [searchParams, setSearchsParams] = useSearchParams();
+    const query = searchParams.get('q')
     const onSearch = (e: { target: { value: React.SetStateAction<string>; }; }) => {
         setSearch(e.target.value)
     }
-
+    useEffect(() => {
+        setSearch(query || "")
+    }, [query])
+    const handleSubmit = (e: { preventDefault: () => void; }) => {
+        e.preventDefault()
+        searchParams.set("q", search);
+        setSearchsParams(searchParams)
+    }
     return (
-        <div className='seach-header'>
+        <div className='seach-header '>
             <div className='search'>
-                <div className='input'>
+                <form className='input' onSubmit={handleSubmit}>
                     <input
                         value={search}
                         onChange={onSearch}
                         type="text"
                         placeholder='Tìm kiếm sản phẩm'
                     />
-                </div>
-                <div className='btn-search'>
+                </form>
+                <button type='submit'
+                    className='btn-search'
+                    onClick={handleSubmit}>
                     <AiOutlineSearch className='icon-search' />
-                </div>
+                </button>
             </div>
 
         </div>

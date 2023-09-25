@@ -30,22 +30,18 @@ $color:#999999;
                 }
 
                 .item-right {
+                    position: relative;
+
                     p {
                         font-weight: 600;
                     }
 
                     .right-child {
                         display: flex;
+                        gap: 15px;
+                        position: absolute;
                         justify-content: space-between;
-
-                        input {
-                            width: 36px;
-                            height: 28px;
-                            text-align: center;
-                            outline: none;
-                            margin: 0 3px;
-                            border-radius: 4px;
-                        }
+                        right: 0;
                     }
                 }
 

@@ -8,7 +8,7 @@ import ReactPaginate from 'react-paginate';
 import { useSearchParams } from 'react-router-dom';
 import { IProducts } from '../../type/IProducts';
 
-const productsPage = 10;
+const productsPage = 15;
 const Products = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -16,11 +16,12 @@ const Products = () => {
     const { products }: { products: IProducts[] } = useContext(ProductContext)
     const [searchParams, setSearchParams] = useSearchParams();
     const query = searchParams.get('q')
-    const currentPage = searchParams.get('p') ? parseInt(searchParams.get('p') as string) : 1
+    const currentPage = searchParams.get('p') ? parseInt(searchParams.get('p') as string) : 0
     const pages = currentPage * productsPage;
     const pageCount = Math.ceil(products.length / productsPage);
+
     const handlePageChange = ({ selected }: { selected: number }) => {
-        searchParams.set("p", selected + "")
+        searchParams.set("p", selected + '')
         setSearchParams(searchParams)
         window.scrollTo(0, 450)
     };

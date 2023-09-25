@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { CartContext } from '../context/cartContext';
 import { IProducts } from '../type/IProducts';
-import { addCart } from '../constants/Message';
+import { addCart, deleteCart } from '../constants/Message';
 
 const useCart = () => {
   const { cart, setCart } = useContext(CartContext);
@@ -29,6 +29,7 @@ const useCart = () => {
     const newCart: IProducts[] = cart.filter((item) => {
       return item.id !== id;
     });
+    deleteCart();
     setCart(newCart);
   };
   const Amount = (id: number, isMount: boolean) => {

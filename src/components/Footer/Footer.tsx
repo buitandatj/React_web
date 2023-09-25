@@ -3,7 +3,7 @@ import React from 'react';
 import './style.scss';
 import { FiPhoneCall } from "react-icons/fi";
 import { FaFacebookSquare, FaInstagramSquare, FaTwitterSquare } from 'react-icons/fa'
-import { congthuong } from '../../constants/Constants';
+import { congthuong } from '../../constants/MediaLink';
 import logothongbao from '../../assets/images/dathongbao.webp'
 
 
@@ -28,8 +28,8 @@ const Footer = () => {
                     </a>
                 </div>
                 <div className='sm:w-1/1 sm:pl-0 md:w-1/2 lg:w-1/4 pt-12'>
-                    <p className='font-bold'>Địa chỉ</p>
-                    <p className='font-bold pt-7'>Sài Gòn:</p>
+                    <p className='font-bold pt-2'>Địa chỉ</p>
+                    <p className='font-bold pt-2'>Sài Gòn:</p>
                     <p>
                         43 Huỳnh Văn Bánh P.17 Q.Phú Nhuận
                         1041 Luỹ Bán Bích P.Tân Thành Q.Tân Phú

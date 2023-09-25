@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './style.scss';
 import { CartContext } from '../../context/cartContext';
-import { IState } from '../../context/productContext';
 import CartItem, { formatPrice } from '../../components/CartItem/CartItem';
+import { IProducts } from '../../type/IProducts';
 const Cart = () => {
-    const { cart }: { cart: IState[] } = useContext(CartContext);
+    const { cart }: { cart: IProducts[] } = useContext(CartContext);
     const [total, setTotal] = useState(0)
     useEffect(() => {
         const total = cart.reduce((total, num) => {
@@ -16,15 +16,13 @@ const Cart = () => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
-
-
     return (
         <div className='container-cart'>
             <div className='cart'>
                 <h4 className='title-cart'>Giỏ hàng của bạn</h4>
                 <div>Có {cart.length} sản phẩm</div>
                 <div className='table-cart'>
-                    {cart.map((item: IState) => {
+                    {cart.map((item: IProducts) => {
                         return (
                             <CartItem item={item} key={item.id} />
                         )

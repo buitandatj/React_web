@@ -8,7 +8,7 @@ import Products from './pages/producPage/Products';
 import ProductDetailsPage from './pages/productDetailPage/ProductDetailsPage';
 import Store from './pages/storePage/Store';
 import Intro from './pages/aboutPage/About';
-import { ToastContainer } from 'react-toastify';
+import { Slide, ToastContainer } from 'react-toastify';
 
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
     <>
       <Header />
       <div className="App">
-        <ToastContainer />
+        <ToastContainer transition={Slide} autoClose={1000} />
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='products' element={<Products />} />

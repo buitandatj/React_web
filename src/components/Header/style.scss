@@ -1,19 +1,12 @@
 .header {
     z-index: 12;
-    height: 90px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
     width: 100%;
-
 
     .container-header {
         display: flex;
         align-items: center;
         width: 1170px;
         justify-content: space-between;
-        position: fixed;
 
         .logo img {
             width: 85px;
@@ -84,12 +77,6 @@
                     text-align: center;
                 }
             }
-
-
         }
     }
-
-
-
-
 }
