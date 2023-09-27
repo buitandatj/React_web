@@ -1,6 +1,6 @@
 .products {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     flex-wrap: wrap;
     gap: 5px;
 }
@@ -10,4 +10,32 @@
     gap: 5px;
     justify-content: center;
     margin-top: 2rem;
+}
+
+.banner {
+    display: flex;
+    background-image: url('../../assets/images/banner.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    justify-content: center;
+    max-width: 1170px;
+    min-height: 430px;
+
+}
+
+@media (max-width:1185px) {
+    .products {
+        justify-content: center;
+    }
+}
+
+@media (max-width:430px) {
+    .products {
+        gap: 50px;
+       
+    }
+
+    .banner {
+        min-height: 190px;
+    }
 }

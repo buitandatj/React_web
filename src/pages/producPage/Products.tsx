@@ -1,6 +1,4 @@
-import React, { useContext, useEffect, useMemo } from 'react';
-import Banner from '../../components/Banner/Banner';
-import './style.scss'
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import Filter from '../../components/Filter/Filter';
 import Product from '../../components/Product/Product';
 import { ProductContext } from '../../context/productContext';
@@ -10,33 +8,34 @@ import { IProducts } from '../../type/IProducts';
 
 const productsPage = 15;
 const Products = () => {
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
-    const { products }: { products: IProducts[] } = useContext(ProductContext)
+    const { products }: { products: IProducts[] } = useContext(ProductContext);
+    const [productSearch, setProductSearch] = useState<IProducts[]>([]);
     const [searchParams, setSearchParams] = useSearchParams();
-    const query = searchParams.get('q')
+    const query = searchParams.get('q');
     const currentPage = searchParams.get('p') ? parseInt(searchParams.get('p') as string) : 0
     const pages = currentPage * productsPage;
-    const pageCount = Math.ceil(products.length / productsPage);
-
-    const handlePageChange = ({ selected }: { selected: number }) => {
-        searchParams.set("p", selected + '')
-        setSearchParams(searchParams)
-        window.scrollTo(0, 450)
-    };
-    const data = useMemo(() => {
+    const pageCount = Math.ceil(productSearch.length / productsPage);
+    useEffect(() => {
         let result = products;
         if (query) {
-            result = products.filter((item) => item.title.toLowerCase().includes(query.toLowerCase()))
+            result = products.filter((item) => item.title.toLowerCase().includes(query.toLowerCase()));
         }
-        result = result.slice(pages, pages + productsPage)
-        return result
-    }, [products, query, pages])
+        setProductSearch(result);
+        console.log(result);
+    }, [products, query]);
+    const handlePageChange = ({ selected }: { selected: number }) => {
+        searchParams.set('p', selected + '');
+        setSearchParams(searchParams);
+        window.scrollTo(0, 450);
+    };
+    const data = useMemo(() => {
+        const result = productSearch.slice(pages, pages + productsPage);
+        return result;
+    }, [productSearch, pages]);
 
     return (
         <div>
-            <Banner />
+            <div className='banner'></div>
             <Filter />
             <div className='products'>
                 {data.map((product: IProducts) => {
