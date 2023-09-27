@@ -1,4 +1,3 @@
-import './style.scss';
 import { Link } from 'react-router-dom';
 import { formatPrice } from '../CartItem/CartItem';
 import 'react-toastify/dist/ReactToastify.css';

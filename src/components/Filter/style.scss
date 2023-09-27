@@ -4,9 +4,9 @@
     margin-top: 40px;
     position: relative;
     z-index: 10;
+    width: 100%;
 
     .title {
-
         display: flex;
         justify-content: space-between;
 
@@ -64,4 +64,55 @@
         }
     }
 
+}
+
+@media (max-width: 937px) {
+    .filter {
+        margin-top: 0px;
+
+        .title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            h1 {
+                width: 450px;
+                font-size: 1.3rem;
+            }
+
+            :hover {
+                .list-arrange {
+                    display: block;
+                    margin-top: -15px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:700px) {
+    .filter {
+        position: relative;
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 50px;
+
+            h1 {
+                width: 100%;
+                font-size: 1.5rem;
+            }
+
+            .toggle-filter {
+                height: 40px;
+            }
+        }
+
+        .list-arrange {
+            right: 33%;
+            top: 178px;
+        }
+    }
 }

@@ -20,7 +20,7 @@
     }
 
     .title-name {
-        margin-bottom: 10px;
+        margin: 10px;
         text-align: center;
         min-height: 70px;
 
@@ -53,6 +53,30 @@
             cursor: pointer;
             padding: 4px;
             border: 1px solid $color-boder;
+        }
+    }
+}
+
+@media(max-width:500px) {
+    .product {
+        width: 100%;
+        align-items: center;
+        border-bottom: 1px solid  rgb(66, 60, 60);
+        .title-name {
+            margin: 5px;
+            font-size: 1.2rem;
+        }
+        .price {
+            font-size: 1.4rem;
+        }
+        .add-cart {
+            justify-content: center;
+            margin-bottom: 20px;
+    
+            button {
+                font-size: 1rem;
+                padding: 10px;
+            }
         }
     }
 }

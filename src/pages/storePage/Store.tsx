@@ -1,14 +1,9 @@
-import './style.scss';
 import { FaMapMarkerAlt } from 'react-icons/fa'
 import ListPage from '../../components/listPage/ListPage';
 import { video, map, facebook, tiktok, insta, shoppe } from '../../constants/MediaLink';
 import Iframe from 'react-iframe'
-import { useEffect } from 'react';
 
 const Store = () => {
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
     return (
         <div className='container-store '>
             <div className='heade-store'>
@@ -20,8 +15,8 @@ const Store = () => {
             </div>
             <div className='address-store'>
                 <p className='address'> <FaMapMarkerAlt />43 Huỳnh Văn Bánh P.17 Quận Phú Nhuận - SÀI GÒN</p>
-                <div>
-                    <Iframe url={map} width="800" height="550" loading="lazy" title="STORE DEGREY MAP" />
+                <div className='map-store'>
+                    <Iframe url={map} className='map' loading="lazy" title="STORE DEGREY MAP" />
                 </div>
             </div>
 

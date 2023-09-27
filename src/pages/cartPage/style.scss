@@ -150,3 +150,55 @@ $color:#999999;
     font-size: 1.3rem;
     font-weight: 600;
 }
+
+@media (max-width:900px) {
+    .container-cart {
+        display: grid;
+        justify-content: center;
+
+        .cart {
+            width: 100%;
+        }
+
+        .information {
+            margin-top: 20px;
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width:428px) {
+    .container-cart {
+        display: grid;
+        justify-content: center;
+
+        .cart {
+            width: 98%;
+            margin-left: 3px;
+
+            .title-cart,
+            div {
+                text-align: center;
+            }
+
+            p {
+                text-align: start;
+            }
+        }
+
+        .information {
+            margin-top: 20px;
+            width: 98%;
+            margin-left: 3px;
+            gap: 50px;
+
+            .title-cart {
+                margin-bottom: 20px;
+            }
+
+            .total {
+                justify-content: space-around;
+            }
+        }
+    }
+}

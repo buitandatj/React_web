@@ -8,7 +8,7 @@ interface IProduct {
 export const ProductContext = createContext<IProduct>({
   products: [],
   setProducts: function (): {} {
-    throw new Error('Function not implemented.');
+    throw new Error();
   }
 });
 
@@ -23,7 +23,7 @@ const ProductProvider = ({ children }: { children: React.ReactNode }) => {
         const response = await myAxios('products', 'GET');
         setProducts(response);
       } catch (error) {
-        console.log(error);
+        console.log(error)
       }
     };
     fetchProducts();

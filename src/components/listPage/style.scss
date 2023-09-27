@@ -24,3 +24,15 @@
         }
     }
 }
+
+@media(max-width:900px) {
+    .right-heade {
+        display: grid;
+        text-align: center;
+
+        .img-right {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

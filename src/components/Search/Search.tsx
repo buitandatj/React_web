@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import './style.scss';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useSearchParams } from 'react-router-dom';
 
@@ -18,6 +17,7 @@ const Search = () => {
         e.preventDefault()
         searchParams.set("q", search);
         setSearchsParams(searchParams)
+        
     }
     return (
         <div className='seach-header '>

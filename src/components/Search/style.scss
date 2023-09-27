@@ -36,8 +36,34 @@ $color-boder: #c6cfe1;
                 font-size: 1.4rem;
             }
         }
+    }
+}
 
+@media (max-width: 900px) {
+    .seach-header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: start;
 
+        .search {
+            display: flex;
+            position: absolute;
+            align-items: center;
+            right: 0;
+        }
+    }
+}
 
+@media (max-width: 500px) {
+    .seach-header {
+        position: relative;
+        display: flex;
+        .search {
+            display: flex;
+            position: absolute;
+            align-items: center;
+            right: -150px;
+        }
     }
 }

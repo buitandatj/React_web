@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import './style.scss';
+
 import ListPage from '../../components/listPage/ListPage';
 import img from '../../assets/images/img-intro.webp';
 import img2 from '../../assets/images/img-intro-2.webp';
@@ -38,9 +37,6 @@ const listsMain = [
 
 
 const Intro = () => {
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [])
     return (
         <div className='container-intro'>
             <div className='heade-intro'>

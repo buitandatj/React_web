@@ -1,5 +1,4 @@
 import React from 'react';
-import './style.scss';
 import imgList from '../../assets/images/img_list_page.webp';
 import { Link } from 'react-router-dom';
 

@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './style.scss';
 import { CartContext } from '../../context/cartContext';
 import CartItem, { formatPrice } from '../../components/CartItem/CartItem';
 import { IProducts } from '../../type/IProducts';
@@ -55,8 +54,6 @@ const Cart = () => {
                     <p>Hiện chúng tôi chỉ áp dụng thanh toán với đơn hàng có giá trị tối thiểu <span>250.000₫</span> trở lên.</p>
                 </div>
             </div>
-
-
         </div>
     );
 };

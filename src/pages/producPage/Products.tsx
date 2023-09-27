@@ -21,7 +21,6 @@ const Products = () => {
             result = products.filter((item) => item.title.toLowerCase().includes(query.toLowerCase()));
         }
         setProductSearch(result);
-        console.log(result);
     }, [products, query]);
     const handlePageChange = ({ selected }: { selected: number }) => {
         searchParams.set('p', selected + '');

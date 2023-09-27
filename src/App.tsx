@@ -1,4 +1,5 @@
 import './App.scss';
+import './styles/Styles.scss'
 import Header from './components/Header/Header';
 import HomePage from './pages/homePage/HomePage';
 import Footer from './components/Footer/Footer';
@@ -9,8 +10,6 @@ import ProductDetailsPage from './pages/productDetailPage/ProductDetailsPage';
 import Store from './pages/storePage/Store';
 import Intro from './pages/aboutPage/About';
 import { Slide, ToastContainer } from 'react-toastify';
-
-
 function App() {
   return (
     <>

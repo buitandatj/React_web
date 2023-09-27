@@ -14,12 +14,72 @@
             margin-top: 2.5rem;
         }
 
-        
+
+    }
+}
+
+.address-store {
+    margin-top: 5.5rem;
+    display: flex;
+    flex-direction: column;
+
+    .address {
+        display: flex;
+        font-weight: 600;
+        font-size: 18px;
+        padding: 20px 180px;
+        align-items: center;
+    }
+
+    .map-store {
+        .map {
+            width: 868px;
+            height: 500px;
+        }
+    }
+}
+
+.contact-store {
+    width: 800px;
+    margin: 4rem 0;
+
+    p {
+        font-weight: 700;
+        font-size: 18px;
+    }
+
+    ul {
+        line-height: 50px;
+        margin: 0 20px;
+
+        li {
+            list-style: circle;
+
+            a {
+                color: #484444;
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .container-store {
+        margin-top: 2.5rem;
+
+        .heade-store {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-direction: column-reverse;
+
+            .video {
+                width: 100%;
+            }
         }
     }
 
     .address-store {
-        margin-top: 5.5rem;
+        margin-top: 3rem;
         display: flex;
         flex-direction: column;
 
@@ -27,29 +87,52 @@
             display: flex;
             font-weight: 600;
             font-size: 18px;
-            padding: 20px 180px;
+            padding: 20px 150px;
             align-items: center;
         }
-    }
 
-    .contact-store {
-        width: 800px;
-        margin: 4rem 0 ;
+        .map-store {
+            .map {
+                width: 100%;
+                height: 500px;
+            }
 
-        p {
-            font-weight: 700;
-            font-size: 18px;
         }
+    }
+}
 
-        ul {
-            line-height: 50px;
-            margin: 0 20px;
+@media (max-width: 500px) {
+    .container-store {
 
-            li {
-                list-style: circle;
-                a {
-                    color: #484444;
-                }
+
+        .heade-store {
+            .left-store {
+                font-size: 1.3rem;
+            }
+
+            .video {
+                width: 100%;
+                height: 450px;
             }
         }
     }
+
+    .address-store {
+        .address {
+            display: flex;
+            font-size: 12px;
+            padding: 10px 30px;
+        }
+
+        .map-store {
+            .map {
+                width: 100%;
+                height: 400px;
+            }
+        }
+    }
+    .contact-store{
+        width: 100%;
+    }
+
+}

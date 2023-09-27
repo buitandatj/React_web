@@ -84,3 +84,26 @@ $color-text-detail : rgb(68, 71, 71);
         }
     }
 }
+
+@media (max-width:500px) {
+    .container-detail {
+        .product-detail {
+            display: flex;
+            flex-direction: column;
+
+            .product-left {
+                text-align: center;
+
+                .btn-add-cart {
+                    width: 100%;
+                }
+            }
+
+            .ship-product {
+                .title-ship {
+                    text-align: start;
+                }
+            }
+        }
+    }
+}

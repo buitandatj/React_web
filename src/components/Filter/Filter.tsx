@@ -1,16 +1,12 @@
-import React, { useContext, useState } from 'react';
-import './style.scss';
+import React, { useContext } from 'react';
 import Search from '../Search/Search';
 import { FaAnglesDown } from "react-icons/fa6";
 import { ProductContext } from '../../context/productContext';
 import { IProducts } from '../../type/IProducts';
 const Filter = () => {
     const { products, setProducts } = useContext(ProductContext)
-    const [, setSort] = useState('')
-
     const handleSortChange = (e: React.MouseEvent<HTMLDivElement> | { target: string | any }) => {
         const selectedSort: string = e.target.textContent;
-        setSort(selectedSort);
         const sortProducts: IProducts[] = [...products];
         if (selectedSort === 'Giá tăng dần') {
             sortProducts.sort((a, b) => a.price - b.price);

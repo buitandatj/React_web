@@ -19,7 +19,7 @@
     background-size: 100% auto;
     justify-content: center;
     max-width: 1170px;
-    min-height: 430px;
+    min-height: 500px;
 
 }
 
@@ -27,9 +27,12 @@
     .products {
         justify-content: center;
     }
+    .banner {
+        min-height: 350px;
+    }
 }
 
-@media (max-width:430px) {
+@media (max-width:500px) {
     .products {
         gap: 50px;
        

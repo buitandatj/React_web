@@ -8,6 +8,10 @@
         width: 1170px;
         justify-content: space-between;
 
+        .nav-menu {
+            display: none;
+        }
+
         .logo img {
             width: 85px;
             min-height: 70px;
@@ -18,6 +22,71 @@
                 margin-right: 50px;
                 display: flex;
                 gap: 80px;
+
+                a {
+                    color: #615959;
+                    font-size: 1rem;
+                    position: relative;
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 1px;
+                        background-color: #191c1d;
+                        transform: scaleX(0);
+                        transform-origin: right center;
+                        transition: transform 0.3s ease-in-out;
+                    }
+
+                    &:hover {
+                        color: black;
+
+                        &::after {
+                            transform: scaleX(1);
+                            transform-origin: left center;
+                        }
+                    }
+                }
+
+                .active {
+                    font-weight: 550;
+                    color: black;
+                    border-bottom: 1px solid #191c1d;
+                }
+            }
+        }
+
+        .menu-mobile {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 40%;
+            height: 100%;
+            margin-top: 60px;
+            background-color: #ffffff;
+            transition: left 0.3s ease-in-out;
+            animation: slide-in 0.3s ease-in-out forwards;
+
+            @keyframes slide-in {
+                0% {
+                    transform: translateX(-100%);
+                }
+
+                100% {
+                    transform: translateX(0);
+                }
+            }
+
+            ul {
+                margin-top: 50px;
+                height: 400px;
+                display: flex;
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
 
                 a {
                     color: #615959;
@@ -79,4 +148,39 @@
             }
         }
     }
+}
+
+@media(max-width:900px) {
+    .header {
+        .container-header {
+            justify-content: space-around;
+
+            .nav-menu {
+                display: block;
+                cursor: pointer;
+                font-size: 2rem;
+            }
+
+            .menu {
+                display: none;
+            }
+
+            .menu-mobile {
+                width: 50%;
+            }
+        }
+    }
+}
+
+
+@media (max-width:500px) {
+    .header {
+        border-bottom: 1px solid black;
+        box-shadow: inset;
+
+        .menu {
+            display: none;
+        }
+    }
+
 }
