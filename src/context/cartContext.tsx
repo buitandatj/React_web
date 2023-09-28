@@ -11,7 +11,16 @@ export const CartContext = createContext<ICart>({
 })
 const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cart, setCart] = useState<IProducts[]>([]);
-
+  useEffect(() => {
+    const storeCart = localStorage.getItem('cart');
+    if (storeCart) {
+      const parsedCart = JSON.parse(storeCart);
+      setCart(parsedCart);
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
   return <CartContext.Provider value={{ cart, setCart }}>{children}</CartContext.Provider>
 };
 
