@@ -11,6 +11,7 @@ const Products = () => {
     const { products }: { products: IProducts[] } = useContext(ProductContext);
     const [productSearch, setProductSearch] = useState<IProducts[]>([]);
     const [searchParams, setSearchParams] = useSearchParams();
+    const [checkSearch, setCheckSearch] = useState(false)
     const query = searchParams.get('q');
     const currentPage = searchParams.get('p') ? parseInt(searchParams.get('p') as string) : 0
     const pages = currentPage * productsPage;
@@ -21,6 +22,11 @@ const Products = () => {
             result = products.filter((item) => item.title.toLowerCase().includes(query.toLowerCase()));
         }
         setProductSearch(result);
+        if (result.length === 0) {
+            setCheckSearch(true)
+        } else {
+            setCheckSearch(false)
+        }
     }, [products, query]);
     const handlePageChange = ({ selected }: { selected: number }) => {
         searchParams.set('p', selected + '');
@@ -36,11 +42,12 @@ const Products = () => {
         <div>
             <div className='banner'></div>
             <Filter />
-            <div className='products'>
-                {data.map((product: IProducts) => {
-                    return <Product key={product.id} product={product} />;
-                })}
-            </div>
+            {checkSearch ? <div className='thong-bao'>Không tìm thấy</div>
+                : <div className='products'>
+                    {data.map((product: IProducts) => {
+                        return <Product key={product.id} product={product} />;
+                    })}
+                </div>}
             <ReactPaginate
                 nextLabel=">"
                 previousLabel="<"

@@ -23,10 +23,18 @@
 
 }
 
+.thong-bao {
+    display: flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-top: 20px;
+}
+
 @media (max-width:1185px) {
     .products {
         justify-content: center;
     }
+
     .banner {
         min-height: 350px;
     }
@@ -35,7 +43,7 @@
 @media (max-width:500px) {
     .products {
         gap: 50px;
-       
+
     }
 
     .banner {
