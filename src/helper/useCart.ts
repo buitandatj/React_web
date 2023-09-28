@@ -12,7 +12,7 @@ const useCart = () => {
       return item.id === product.id;
     });
     if (cartItem) {
-      const newCart = [...cart].map((item) => {
+      const newCart:IProducts[] = [...cart].map((item) => {
         if (item.id === product.id) {
           return { ...item, mount: cartItem.mount + 1 };
         } else {

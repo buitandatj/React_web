@@ -3,31 +3,39 @@ import { formatPrice } from '../CartItem/CartItem';
 import 'react-toastify/dist/ReactToastify.css';
 import { IProducts } from '../../type/IProducts';
 import useCart from '../../helper/useCart';
-
+import { useContext } from 'react'
+import LoadingProduct from '../../loading/LoadingProduct';
+import { LoadingContextType, loadingContext } from '../../context/loadingContext';
 
 const Product = ({ product }: { product: IProducts }) => {
+    const { loading } = useContext<LoadingContextType>(loadingContext)
     const { AddToCart } = useCart();
     const { id, title, image, price } = product
+    
     return (
         <>
-            <div key={id} className='product'>
-                <div className='image-product'>
-                    <Link to={`${id}`}>
-                        <img src={image} alt="" />
-                    </Link>
-                </div>
-                <div className='title-name'>
-                    <Link to={`${id}`}>{title}</Link>
-                </div>
-                <div className='price'>
-                    <p>{formatPrice(price)}</p>
-                </div>
-                <div className='add-cart'>
-                    <button onClick={() => AddToCart(product)}>Thêm vào giỏ</button>
-                    <Link to={`${id}`}><button >Xem chi tiết</button></Link>
-                </div>
-
-            </div>
+            {
+                loading ?
+                    <LoadingProduct></LoadingProduct>
+                    :
+                    <div key={id} className='product'>
+                        <div className='image-product'>
+                            <Link to={`${id}`}>
+                                <img src={image} alt="" />
+                            </Link>
+                        </div>
+                        <div className='title-name'>
+                            <Link to={`${id}`}>{title}</Link>
+                        </div>
+                        <div className='price'>
+                            <p>{formatPrice(price)}</p>
+                        </div>
+                        <div className='add-cart'>
+                            <button onClick={() => AddToCart(product)}>Thêm vào giỏ</button>
+                            <Link to={`${id}`}><button >Xem chi tiết</button></Link>
+                        </div>
+                    </div>
+            }
         </>
 
 
