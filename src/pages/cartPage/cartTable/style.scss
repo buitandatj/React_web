@@ -1,5 +1,7 @@
 $color:#999999;
 
+
+
 .container-cart {
     margin-top: 4rem;
     display: flex;
@@ -143,13 +145,12 @@ $color:#999999;
     }
 }
 
-
-
-
 .title-cart {
     font-size: 1.3rem;
     font-weight: 600;
 }
+
+
 
 @media (max-width:900px) {
     .container-cart {
@@ -165,6 +166,7 @@ $color:#999999;
             width: 100%;
         }
     }
+
 }
 
 @media (max-width:428px) {
