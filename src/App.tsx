@@ -10,6 +10,9 @@ import ProductDetailsPage from './pages/productDetailPage/ProductDetailsPage';
 import Store from './pages/storePage/Store';
 import Intro from './pages/aboutPage/About';
 import { Slide, ToastContainer } from 'react-toastify';
+import Checkout from './pages/cartPage/checkout/Checkout';
+import CartTable from './pages/cartPage/cartTable/CartTable';
+import Login from './pages/loginPage/Login';
 function App() {
   return (
     <>
@@ -21,9 +24,12 @@ function App() {
           <Route path='products' element={<Products />} />
           <Route path='/products/:id' element={<ProductDetailsPage />} />
           <Route path='store' element={<Store />} />
-          <Route path='intro' element={<Intro />} />
+          <Route path='about' element={<Intro />} />
           <Route path='cart' element={<Cart />} >
+            <Route path='' element={<CartTable />} />
+            <Route path='checkout' element={<Checkout />} />
           </Route>
+          <Route path='login' element={<Login />} />
         </Routes>
       </div>
       <Footer />

@@ -11,7 +11,7 @@
     "react-iframe": "^1.8.5",
     "react-owl-carousel": "^2.3.3",
     "react-paginate": "^8.2.0",
-    "react-router-dom": "^6.15.0",
+    "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
     "react-toastify": "^9.1.3",
     "sass": "^1.66.1",
@@ -19,12 +19,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --port 3000",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "json-server": "json-server --port 3002 --watch db.json"
   },
   "eslintConfig": {
     "extends": [
@@ -58,6 +59,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
+    "@types/json-server": "^0.14.5",
     "@types/node": "^16.18.50",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",

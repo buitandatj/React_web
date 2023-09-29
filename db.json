@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "buitandat",
+      "password": "buitandat"
+    },
+    {
+      "id": 2,
+      "username": "a",
+      "password": "a"
+    }
+  ]
+}

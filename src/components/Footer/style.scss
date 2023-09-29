@@ -2,7 +2,8 @@ footer {
     font-size: 16px;
     margin-top: 1.25rem;
     background: #000000;
-    .container-footer{
+
+    .container-footer {
         max-width: 1170px;
         margin: 0 auto;
         display: flex;
@@ -10,29 +11,31 @@ footer {
         align-content: center;
         flex-wrap: wrap;
         padding: 5rem 0;
+
         p,
         h4,
         h5,
         a {
             color: white;
         }
-    
+
         ul li {
             list-style: square;
             color: white;
         }
     }
 
-  
+
 }
 
 @media (max-width: 937px) {
     footer {
         display: grid;
         gap: 10px;
-        .container-footer{
-            &>div{
-                padding:0 50px;
+
+        .container-footer {
+            &>div {
+                padding: 0 50px;
             }
         }
     }
@@ -43,7 +46,7 @@ footer {
         display: grid;
         justify-content: center;
 
-        .box-footer{
+        .box-footer {
             margin-top: 30px;
         }
     }

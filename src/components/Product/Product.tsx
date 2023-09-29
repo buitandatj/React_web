@@ -11,7 +11,7 @@ const Product = ({ product }: { product: IProducts }) => {
     const { loading } = useContext<LoadingContextType>(loadingContext)
     const { AddToCart } = useCart();
     const { id, title, image, price } = product
-    
+
     return (
         <>
             {

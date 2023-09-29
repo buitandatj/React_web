@@ -65,7 +65,6 @@
             top: 0;
             width: 40%;
             height: 100%;
-            margin-top: 60px;
             background-color: #ffffff;
             transition: left 0.3s ease-in-out;
             animation: slide-in 0.3s ease-in-out forwards;
@@ -78,6 +77,13 @@
                 100% {
                     transform: translateX(0);
                 }
+            }
+
+            .close-menu {
+                font-size: 2rem;
+                position: absolute;
+                right: 15px;
+                top: 15px;
             }
 
             ul {
@@ -150,6 +156,14 @@
     }
 }
 
+@media(max-width:1200px) {
+    .header {
+        .container-header {
+            justify-content: space-around;
+        }
+    }
+}
+
 @media(max-width:900px) {
     .header {
         .container-header {
@@ -180,6 +194,9 @@
 
         .menu {
             display: none;
+        }
+        .menu-mobile {
+            padding-top: 50px;
         }
     }
 

@@ -7,11 +7,13 @@
 @import '../components/Slider/style.scss';
 
 @import '../pages/aboutPage/style.scss';
-@import '../pages/cartPage/style.scss';
+@import '../pages/cartPage/cartTable/style.scss';
+@import '../pages/cartPage/checkout/styles.scss';
 @import '../pages/homePage/style.scss';
 @import '../pages/producPage/style.scss';
 @import '../pages/productDetailPage/style.scss';
 @import '../pages/storePage/style.scss';
+@import '../pages/loginPage/style.scss';
 
 
-@import '../loading/styles.scss'
+@import '../loading/styles.scss';
