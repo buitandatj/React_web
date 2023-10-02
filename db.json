@@ -3,12 +3,20 @@
     {
       "id": 1,
       "username": "buitandat",
-      "password": "buitandat"
+      "password": "buitandat",
+      "phone": "123"
     },
     {
-      "id": 2,
+      "id": "778fc061-86ba-4f4b-a3c0-4cc3cdd8bd44",
       "username": "a",
+      "phone": "4234234",
       "password": "a"
+    },
+    {
+      "id": "c0b63c93-d175-4dc2-b6dd-3a9aba32592d",
+      "username": "c",
+      "phone": "43543534",
+      "password": "c"
     }
   ]
 }

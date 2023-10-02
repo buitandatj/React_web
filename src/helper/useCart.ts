@@ -7,7 +7,7 @@ const useCart = () => {
   const { cart, setCart } = useContext(CartContext);
   const AddToCart = (product: IProducts) => {
     const newProduct = { ...product, mount: 1 };
-    const cartItem = cart.find((item) => {
+    const cartItem = cart.find((item: { id: number; }) => {
       return item.id === product.id;
     });
     if (cartItem) {
@@ -25,14 +25,14 @@ const useCart = () => {
     addCart();
   };
   const DeleteItemCart = (id: number) => {
-    const newCart: IProducts[] = cart.filter((item) => {
+    const newCart: IProducts[] = cart.filter((item: { id: number; }) => {
       return item.id !== id;
     });
     deleteCart();
     setCart(newCart);
   };
   const Amount = (id: number, isMount: boolean) => {
-    const newItemCart = cart.map((item) => {
+    const newItemCart = cart.map((item: { id: number; mount: number; }) => {
       if (item.id === id) {
         if (isMount) {
           return { ...item, mount: item.mount + 1 };

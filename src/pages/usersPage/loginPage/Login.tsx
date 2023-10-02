@@ -1,10 +1,10 @@
 import React, { useContext, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { alertLogin, loginFail, loginSucces } from '../../constants/Message';
-import { userContext } from '../../context/userContext';
+import { useNavigate, Link } from 'react-router-dom';
+import { alertLogin, loginFail, loginSuccess } from '../../../constants/Message';
+import { userContext } from '../../../context/userContext';
 
 const Login = () => {
-    const { userData, setIsLoggedIn } = useContext(userContext)
+    const { userData, setIsLoggedIn, setCurrentUser } = useContext(userContext)
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const history = useNavigate()
@@ -17,8 +17,9 @@ const Login = () => {
             return;
         }
         if (user) {
-            setIsLoggedIn(true)
-            loginSucces()
+            setIsLoggedIn(true);
+            setCurrentUser(user);
+            loginSuccess()
             setUsername('')
             setPassword('')
             history('/products')
@@ -50,6 +51,10 @@ const Login = () => {
                 <button onClick={handleLogin} className="login-button" type='submit'>
                     Đăng nhập
                 </button>
+
+                <div className='register'>
+                    <Link to='register' className='text-[white]'>Register</Link>
+                </div>
             </form>
         </div>
     );

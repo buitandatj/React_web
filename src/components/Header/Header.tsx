@@ -3,16 +3,17 @@ import { Link, NavLink } from 'react-router-dom';
 import { FaCartShopping } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
-import { RiLoginBoxFill } from 'react-icons/ri'
+import { RiLoginBoxFill, RiLogoutBoxFill } from 'react-icons/ri'
 import { useContext, useState } from 'react';
 import { CartContext } from '../../context/cartContext';
 import { IProducts } from '../../type/IProducts';
 import { userContext } from '../../context/userContext';
+import { logoutSuccess } from '../../constants/Message';
 
 const Header = () => {
 
     const { cart }: { cart: IProducts[] } = useContext(CartContext);
-    const { userData, isLoggedIn } = useContext(userContext)
+    const { currentUser, setCurrentUser, setIsLoggedIn } = useContext(userContext);
     const [showMenu, setShowMenu] = useState(false)
     const toggleMenu = () => {
         setShowMenu(!showMenu);
@@ -31,9 +32,13 @@ const Header = () => {
             </ul>
         </div>
     }
+    const handleLogout = () => {
+        setCurrentUser(null);
+        setIsLoggedIn(false);
+        logoutSuccess()
+    }
     return (
         <header className='header fixed top-0'>
-
             <div className='bg-white w-100 d-flex justify-center'>
                 <nav className='container-header h-[90px]'>
                     {menuMobile}
@@ -54,7 +59,6 @@ const Header = () => {
                         </ul>
                     </div>
                     <div className='flex gap-2 items-center'>
-                        {isLoggedIn ? <div>{ }</div> : ''}
                         <div className='cart '>
                             <Link to="/cart " className='flex'>
                                 <FaCartShopping className='h-[27px] w-[27px] icon-cart' />
@@ -65,9 +69,18 @@ const Header = () => {
                                 </div>
                             </Link>
                         </div>
-                        <Link to='login' className='icon-login cursor-pointer'>
-                            <RiLoginBoxFill className='text-3xl' />
-                        </Link>
+                        {currentUser ? (
+                            <div className='flex items-center'>
+                                {currentUser && (
+                                    <div> {currentUser.username}!</div>
+                                )}
+                                <Link to='form' onClick={handleLogout}><RiLogoutBoxFill className='text-3xl' /></Link>
+                            </div>
+                        ) : (
+                            <Link to='login' className='icon-login cursor-pointer'>
+                                <RiLoginBoxFill className='text-3xl' />
+                            </Link>
+                        )}
 
                     </div>
                 </nav>

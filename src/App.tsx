@@ -12,7 +12,9 @@ import Intro from './pages/aboutPage/About';
 import { Slide, ToastContainer } from 'react-toastify';
 import Checkout from './pages/cartPage/checkout/Checkout';
 import CartTable from './pages/cartPage/cartTable/CartTable';
-import Login from './pages/loginPage/Login';
+import Login from './pages/usersPage/loginPage/Login';
+import RegisterPage from './pages/usersPage/registerPage/RegisterPage';
+import UserForm from './pages/usersPage/UserForm';
 function App() {
   return (
     <>
@@ -29,7 +31,11 @@ function App() {
             <Route path='' element={<CartTable />} />
             <Route path='checkout' element={<Checkout />} />
           </Route>
-          <Route path='login' element={<Login />} />
+          <Route path='login' element={<UserForm />} >
+            <Route path='' element={<Login />} />
+            <Route path='register' element={<RegisterPage />} />
+          </Route>
+
         </Routes>
       </div>
       <Footer />
