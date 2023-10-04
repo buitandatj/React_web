@@ -47,7 +47,7 @@ const Login = () => {
                 <h1 className="login-title">Đăng nhập</h1>
                 <input
                     type="text"
-                    placeholder="Tên đăng nhập"
+                    placeholder="Email"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     className="login-input"

@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { instanceUser } from '../../../api/ApiUser';
 import { v4 as uuidv4 } from 'uuid';
+import { useNavigate, Link } from 'react-router-dom';
 import { IoMdArrowRoundBack } from 'react-icons/io';
-import { password, phone, register, userName } from '../../../constants/Message';
-import { Link } from 'react-router-dom';
+import { nameUser, password, phone, register, userName, validateForm } from '../../../constants/Message';
+import { userContext } from '../../../context/userContext';
 const RegisterPage = () => {
+    const { userData } = useContext(userContext)
+    const history = useNavigate()
     const [formUserRegiste, setFormUserRegiste] = useState({
         id: '',
         lastname: '',
@@ -13,7 +16,6 @@ const RegisterPage = () => {
         phone: '',
         password: ''
     });
-    
     const handleChange = (e: { target: { name: string; value: string; }; }) => {
         const { name, value } = e.target;
         setFormUserRegiste({
@@ -24,9 +26,26 @@ const RegisterPage = () => {
 
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
+        let emailUser = userData.find((user) => user.username === formUserRegiste.username);
         try {
+            if (!formUserRegiste.lastname && !formUserRegiste.firstname) {
+                alert(nameUser);
+                return;
+            }
             if (!formUserRegiste.username) {
                 alert(userName);
+                return;
+            }
+            if (emailUser) {
+                alert(validateForm)
+                setFormUserRegiste({
+                    id: '',
+                    lastname: '',
+                    firstname: '',
+                    username: '',
+                    phone: '',
+                    password: ''
+                })
                 return;
             }
             if (!formUserRegiste.password) {
@@ -52,7 +71,8 @@ const RegisterPage = () => {
                 phone: '',
                 password: ''
             })
-              register()
+            history('/form');
+            register()
             window.location.reload()
         } catch (error) {
             console.error(error);
@@ -87,7 +107,7 @@ const RegisterPage = () => {
                     type="text"
                     name='username'
                     value={formUserRegiste.username}
-                    placeholder="Tên đăng nhập"
+                    placeholder="Email"
                     className="login-input"
                     onChange={handleChange}
                 />
