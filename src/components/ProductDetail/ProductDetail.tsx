@@ -6,10 +6,13 @@ import { useParams } from 'react-router-dom';
 import { formatPrice } from '../CartItem/CartItem'
 import { IProducts } from '../../type/IProducts';
 import useCart from '../../helper/useCart';
+import { userContext } from '../../context/userContext';
 const ProductDetail = () => {
     const { AddToCart } = useCart()
     const { id } = useParams();
     const { products }: { products: IProducts[] } = useContext(ProductContext)
+    const { currentUser } = useContext(userContext);
+    const userId: number | undefined = currentUser?.id
     const productItem: IProducts | undefined = products.find((item: { id: number | undefined; }) => {
         return item.id === id
     })
@@ -25,7 +28,7 @@ const ProductDetail = () => {
                     productItem ? (
                         <>
                             <div className='price-product'>{formatPrice(productItem?.price)}</div>
-                            <div className='btn-add-cart' onClick={() => AddToCart(productItem)}>
+                            <div className='btn-add-cart' onClick={() => AddToCart(productItem, userId)}>
                                 <button>thêm vào giỏ</button>
                             </div>
                         </>

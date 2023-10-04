@@ -6,12 +6,14 @@ import useCart from '../../helper/useCart';
 import { useContext } from 'react'
 import LoadingProduct from '../../loading/LoadingProduct';
 import { LoadingContextType, loadingContext } from '../../context/loadingContext';
+import { userContext } from '../../context/userContext';
 
 const Product = ({ product }: { product: IProducts }) => {
     const { loading } = useContext<LoadingContextType>(loadingContext)
+    const { currentUser } = useContext(userContext);
     const { AddToCart } = useCart();
     const { id, title, image, price } = product
-
+    const userId:number| undefined = currentUser?.id
     return (
         <>
             {
@@ -31,7 +33,7 @@ const Product = ({ product }: { product: IProducts }) => {
                             <p>{formatPrice(price)}</p>
                         </div>
                         <div className='add-cart'>
-                            <button onClick={() => AddToCart(product)}>Thêm vào giỏ</button>
+                            <button onClick={() => AddToCart(product, userId)}>Thêm vào giỏ</button>
                             <Link to={`${id}`}><button >Xem chi tiết</button></Link>
                         </div>
                     </div>

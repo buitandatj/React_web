@@ -1,38 +1,49 @@
-import  { useContext } from 'react';
+import { useContext } from 'react';
 import { CartContext } from '../context/cartContext';
 import { IProducts } from '../type/IProducts';
 import { addCart, deleteCart } from '../constants/Message';
+import { instanceUser } from '../api/ApiUser';
 
 const useCart = () => {
   const { cart, setCart } = useContext(CartContext);
-  const AddToCart = (product: IProducts) => {
-    const newProduct = { ...product, mount: 1 };
-    const cartItem = cart.find((item: { id: number; }) => {
-      return item.id === product.id;
-    });
+  const AddToCart = async (product: IProducts, userId: number | undefined) => {
+    const cartItem = cart?.find((item: { id: number }) => item.id === product.id);
     if (cartItem) {
-      const newCart: IProducts[] = [...cart].map((item) => {
+      const newCart: IProducts[] = cart.map((item: { id: number; mount: number }) => {
         if (item.id === product.id) {
-          return { ...item, mount: cartItem.mount + 1 };
+          return { ...item, mount: item.mount + 1 };
         } else {
           return item;
         }
       });
+      try {
+        const newCart = { ...product, mount: cartItem.mount + 1, userId };
+        await instanceUser.put(`carts/${cartItem.id}`, newCart);
+      } catch (error) {
+        console.error(error);
+      }
       setCart(newCart);
     } else {
-      setCart([...cart, newProduct]);
+      const newProduct = { ...product, mount: 1, userId: userId };
+      const res = await instanceUser.post('carts', newProduct);
+      setCart([...cart, res.data]);
     }
     addCart();
   };
-  const DeleteItemCart = (id: number) => {
-    const newCart: IProducts[] = cart.filter((item: { id: number; }) => {
-      return item.id !== id;
-    });
-    deleteCart();
-    setCart(newCart);
+
+  const DeleteItemCart = async (id: number, userId: number | undefined) => {
+    try {
+      await instanceUser.delete(`carts/${id}`);
+      const updatedCart = cart.filter((item: { id: number }) => item.id !== id);
+      setCart(updatedCart);
+      deleteCart();
+    } catch (error) {
+      console.error(error);
+    }
   };
-  const Amount = (id: number, isMount: boolean) => {
-    const newItemCart = cart.map((item: { id: number; mount: number; }) => {
+
+  const Amount = async (id: number, isMount: boolean) => {
+    const newItemCart = cart?.map((item: { id: number; mount: number }) => {
       if (item.id === id) {
         if (isMount) {
           return { ...item, mount: item.mount + 1 };
@@ -46,7 +57,13 @@ const useCart = () => {
       return item;
     });
 
-    setCart(newItemCart);
+    const updateItem = newItemCart.find((item: { id: number }) => item.id === id);
+    try {
+      await instanceUser.put(`carts/${id}`, updateItem);
+      setCart(newItemCart);
+    } catch (error) {
+      console.error(error);
+    }
   };
   return { AddToCart, DeleteItemCart, Amount };
 };

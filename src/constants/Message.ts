@@ -11,3 +11,4 @@ export const alertLogin = 'Vui lòng nhập...';
 export const userName = 'vui lòng nhập tên tài khoản';
 export const password = 'vui lòng nhập mật khẩu';
 export const phone = 'vui lòng nhập số điện thoại';
+export const alertCart = 'không có sản phẩm nào...'

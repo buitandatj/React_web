@@ -1,5 +1,7 @@
 export interface IUsers {
-  id: number;
+  lastname: string;
+  firtsname: string;
+  id: number | string | undefined | any;
   username: string;
   phone: number;
   password: string;

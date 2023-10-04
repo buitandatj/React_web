@@ -3,31 +3,31 @@ import { IProducts } from '../../../type/IProducts';
 import { CartContext } from '../../../context/cartContext';
 import { formatPrice } from '../../../components/CartItem/CartItem';
 import axios from 'axios';
-interface IProvince {
-    code: string;
-    name: string;
+
+interface IProvinces {
+    province_id: string,
+    province_name: string,
+}
+interface IDistrict {
+    district_id: string,
+    district_name: string,
 }
 const Checkout = () => {
-    const [provinces, setProvinces] = useState<IProvince[]>([])
-    const [district, setDistrict] = useState<IProvince[]>([])
-    const [select, setSelect] = useState('')
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const res = await axios.get("https://provinces.open-api.vn/api/");
-                setProvinces(res.data);
-                setDistrict(res.data.districts)
-            } catch (error) {
-                console.log(error)
-            }
-        };
-        console.log(provinces);
-
-        fetchData();
-    }, []);
     const { cart }: { cart: IProducts[] } = useContext(CartContext);
     const { total }: { total: number } = useContext(CartContext);
+    const [provinces, setProvinces] = useState<IProvinces[]>([])
+    useEffect(() => {
+        const apiGetProvinces = async () => {
+            try {
+                const res = await axios.get('https://vapi.vnappmob.com/api/province/');
+                const data = res.data.results;
+                setProvinces(data)
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        apiGetProvinces()
+    }, [])
 
     return (
         <div className='form-container'>
@@ -51,23 +51,15 @@ const Checkout = () => {
                     <div>
                         <select
                             id="city"
-                            value={select}
-                            onChange={(e) => setSelect(e.target.value)}
                         >
-                            <option value="" disabled>Chọn tỉnh thành</option>
-                            {provinces.map((province) => (
-                                <option key={province.code} value={province.name}>
-                                    {province.name}
-                                </option>
-                            ))}
-                        </select>
-
-                        <select id="district">
-                            <option value="" selected>Chọn quận huyện</option>
-                        </select>
-
-                        <select id="ward">
-                            <option value="" selected>Chọn phường xã</option>
+                            <option value="" selected>Chọn tỉnh thành</option>
+                            {
+                                provinces.map((item) => {
+                                    return (
+                                        <option key={item?.province_id}>{item?.province_name}</option>
+                                    )
+                                })
+                            }
                         </select>
                     </div>
                     <button type="submit">Hoàn tất đặt hàng</button>
@@ -76,7 +68,7 @@ const Checkout = () => {
             <div className='checkout-content'>
                 <div>DEGREY VIETNAM</div>
                 <div className='table-cart'>
-                    {cart.map((item: IProducts) => {
+                    {cart?.map((item: IProducts) => {
                         return (
                             <div className='form-items' key={item.id}>
                                 <img className='form-img' src={item.image} alt={item.title} />
@@ -97,3 +89,5 @@ const Checkout = () => {
 };
 
 export default Checkout;
+
+

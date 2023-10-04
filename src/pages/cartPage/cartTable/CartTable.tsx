@@ -3,17 +3,23 @@ import { IProducts } from '../../../type/IProducts';
 import { CartContext } from '../../../context/cartContext';
 import CartItem, { formatPrice } from '../../../components/CartItem/CartItem';
 import { Link } from 'react-router-dom';
+import { alertCart } from '../../../constants/Message';
 
 const CartTable = () => {
     const { cart }: { cart: IProducts[] } = useContext(CartContext);
     const { total }: { total: number } = useContext(CartContext);
+    const handleCheckout = () => {
+        if (cart.length === 0) {
+            alert(alertCart)
+        }
+    }
     return (
         <div className='container-cart'>
             <div className='cart'>
                 <h4 className='title-cart'>Giỏ hàng của bạn</h4>
-                <div>Có {cart.length} sản phẩm</div>
+                <div>Có {cart?.length} sản phẩm</div>
                 <div className='table-cart'>
-                    {cart.map((item: IProducts) => {
+                    {cart?.map((item: IProducts) => {
                         return (
                             <CartItem item={item} key={item.id} />
                         )
@@ -36,11 +42,17 @@ const CartTable = () => {
                     <li>Phí vận chuyển sẽ được tính ở trang thanh toán.</li>
                     <li>Bạn cũng có thể nhập mã giảm giá ở trang thanh toán.</li>
                 </div>
-                <Link to='checkout'>
-                    <div className='btn-cart'>
+                {cart.length === 0 ? (
+                    <div className='btn-cart' onClick={handleCheckout}>
                         <button>THANH TOÁN</button>
                     </div>
-                </Link>
+                ) : (
+                    <Link to='checkout' onClick={handleCheckout}>
+                        <div className='btn-cart'>
+                            <button>THANH TOÁN</button>
+                        </div>
+                    </Link>
+                )}
                 <div className='warning'>
                     <p className='warning-title'>Chính sách giao hàng</p>
                     <p>Hiện chúng tôi chỉ áp dụng thanh toán với đơn hàng có giá trị tối thiểu <span>250.000₫</span> trở lên.</p>

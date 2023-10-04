@@ -19,7 +19,7 @@ const Products = () => {
     useEffect(() => {
         let result = products;
         if (query) {
-            result = products.filter((item) => item.title.toLowerCase().includes(query.toLowerCase()));
+            result = products.filter((item: { title: string; }) => item.title.toLowerCase().includes(query.toLowerCase()));
         }
         setProductSearch(result);
         if (result.length === 0) {

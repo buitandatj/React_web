@@ -1,7 +1,7 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { ICart } from '../type/ICart';
 import { IProducts } from '../type/IProducts';
-
+import { instanceUser } from '../api/ApiUser';
 
 export const CartContext = createContext<ICart>({
   cart: [],
@@ -19,19 +19,24 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
     }, 0)
     setTotal(total)
   }, [cart])
+
   useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-  useEffect(() => {
-    const storeCart = localStorage.getItem('cart');
-    if (storeCart) {
-      const parsedCart = JSON.parse(storeCart);
-      setCart(parsedCart);
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      const fetchCart = async () => {
+        try {
+          const res = await instanceUser.get(`carts?userId=${userId}`)
+          const carts = res.data
+          console.log(carts);
+          setCart(carts)
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      fetchCart()
     }
-  }, []);
-  useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-  }, [cart]);
+  }, [])
+
   return <CartContext.Provider value={{ cart, setCart, total }}>{children}</CartContext.Provider>
 };
 

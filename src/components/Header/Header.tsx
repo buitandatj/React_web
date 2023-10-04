@@ -8,13 +8,15 @@ import { useContext, useState } from 'react';
 import { CartContext } from '../../context/cartContext';
 import { IProducts } from '../../type/IProducts';
 import { userContext } from '../../context/userContext';
-import { logoutSuccess } from '../../constants/Message';
+import useUser from '../../helper/useUser';
+
 
 const Header = () => {
-
+    const { handleLogout } = useUser();
+    const { currentUser } = useContext(userContext);
     const { cart }: { cart: IProducts[] } = useContext(CartContext);
-    const { currentUser, setCurrentUser, setIsLoggedIn } = useContext(userContext);
     const [showMenu, setShowMenu] = useState(false)
+
     const toggleMenu = () => {
         setShowMenu(!showMenu);
     };
@@ -32,11 +34,9 @@ const Header = () => {
             </ul>
         </div>
     }
-    const handleLogout = () => {
-        setCurrentUser(null);
-        setIsLoggedIn(false);
-        logoutSuccess()
-    }
+
+
+
     return (
         <header className='header fixed top-0'>
             <div className='bg-white w-100 d-flex justify-center'>
@@ -64,17 +64,15 @@ const Header = () => {
                                 <FaCartShopping className='h-[27px] w-[27px] icon-cart' />
                                 <div className='total-cart'>
                                     <p className='length'>
-                                        {cart.length}
+                                        {cart?.length}
                                     </p>
                                 </div>
                             </Link>
                         </div>
                         {currentUser ? (
                             <div className='flex items-center'>
-                                {currentUser && (
-                                    <div> {currentUser.username}!</div>
-                                )}
-                                <Link to='form' onClick={handleLogout}><RiLogoutBoxFill className='text-3xl' /></Link>
+                                <div> Hello {currentUser.lastname} !</div>
+                                <Link to='login' onClick={handleLogout}><RiLogoutBoxFill className='text-3xl' /></Link>
                             </div>
                         ) : (
                             <Link to='login' className='icon-login cursor-pointer'>
@@ -90,3 +88,7 @@ const Header = () => {
 };
 
 export default Header;
+
+function setCart(updatedCart: IProducts[]) {
+    throw new Error('Function not implemented.');
+}

@@ -25,17 +25,27 @@ export const UserProvider = ({ children }: ChildrenProps) => {
     const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
     const [currentUser, setCurrentUser] = useState<IUsers | null>(null);
     useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const res = await instanceUser.get('users')
-                const users = res.data
-                setUserData(users)
-            } catch (error) {
-                console.log(error);
-            }
+        const userId = localStorage.getItem('userId');
+        if (userId) {
+            setIsLoggedIn(true);
+            const user: IUsers | any = userData.find((item) => item.id === userId);
+            setCurrentUser(user);
         }
-        fetchUser()
-    }, [])
+        if (userData.length === 0) {
+            const fetchUser = async () => {
+                try {
+                    const res = await instanceUser.get('users')
+                    const users = res.data
+                    setIsLoggedIn(true);
+                    setUserData(users)
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+            fetchUser()
+        }
+
+    }, [userData])
     return (
         <userContext.Provider value={{ userData, setUserData, isLoggedIn, currentUser, setIsLoggedIn, setCurrentUser }}>
             {children}

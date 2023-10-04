@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { instanceUser } from '../../../api/ApiUser';
 import { v4 as uuidv4 } from 'uuid';
 import { IoMdArrowRoundBack } from 'react-icons/io';
@@ -7,10 +7,13 @@ import { Link } from 'react-router-dom';
 const RegisterPage = () => {
     const [formUserRegiste, setFormUserRegiste] = useState({
         id: '',
+        lastname: '',
+        firstname: '',
         username: '',
         phone: '',
         password: ''
     });
+    
     const handleChange = (e: { target: { name: string; value: string; }; }) => {
         const { name, value } = e.target;
         setFormUserRegiste({
@@ -43,11 +46,14 @@ const RegisterPage = () => {
             setFormUserRegiste(res.data);
             setFormUserRegiste({
                 id: '',
+                lastname: '',
+                firstname: '',
                 username: '',
                 phone: '',
                 password: ''
-            });
-            register()
+            })
+              register()
+            window.location.reload()
         } catch (error) {
             console.error(error);
         }
@@ -58,6 +64,25 @@ const RegisterPage = () => {
                 onSubmit={handleSubmit}
                 className="login-box">
                 <h1 className="login-title">Đăng ký</h1>
+                <div className='flex gap-3'>
+                    <input
+                        type="text"
+                        name='lastname'
+                        value={formUserRegiste.lastname}
+                        placeholder="Họ..."
+                        className="login-input"
+                        onChange={handleChange}
+                    />
+
+                    <input
+                        type="text"
+                        name='firstname'
+                        value={formUserRegiste.firstname}
+                        placeholder="Tên..."
+                        className="login-input"
+                        onChange={handleChange}
+                    />
+                </div>
                 <input
                     type="text"
                     name='username'
