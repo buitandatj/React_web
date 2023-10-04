@@ -3,7 +3,6 @@ import { Link, NavLink } from 'react-router-dom';
 import { FaCartShopping } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
-import { RiLoginBoxFill, RiLogoutBoxFill } from 'react-icons/ri'
 import { useContext, useState } from 'react';
 import { CartContext } from '../../context/cartContext';
 import { IProducts } from '../../type/IProducts';
@@ -70,13 +69,13 @@ const Header = () => {
                             </Link>
                         </div>
                         {currentUser ? (
-                            <div className='flex items-center'>
-                                <div> Hello {currentUser.lastname} !</div>
-                                <Link to='login' onClick={handleLogout}><RiLogoutBoxFill className='text-3xl' /></Link>
+                            <div className='right-header-mobile flex items-center'>
+                                <div className='nameUser'> Hello {currentUser.lastname} !</div>
+                                <Link to='form' onClick={handleLogout}><div className='logout'>Đăng xuất</div></Link>
                             </div>
                         ) : (
-                            <Link to='login' className='icon-login cursor-pointer'>
-                                <RiLoginBoxFill className='text-3xl' />
+                            <Link to='form' className='icon-login cursor-pointer'>
+                                <div className='login'>Đăng nhập</div>
                             </Link>
                         )}
 
@@ -89,6 +88,3 @@ const Header = () => {
 
 export default Header;
 
-function setCart(updatedCart: IProducts[]) {
-    throw new Error('Function not implemented.');
-}

@@ -154,6 +154,23 @@
             }
         }
     }
+
+    .logout,
+    .login {
+        padding: 3px;
+        border: 1px solid #000;
+        border-radius: 5px;
+
+        &:hover{
+            box-shadow: #615959;
+            background-color: #000;
+            color: #ffffff;
+        }
+    }
+    .nameUser{
+        margin-right: 5px;
+    }
+
 }
 
 @media(max-width:1200px) {
@@ -195,8 +212,12 @@
         .menu {
             display: none;
         }
+
         .menu-mobile {
             padding-top: 50px;
+        }
+        .right-header-mobile{
+            flex-direction: column;
         }
     }
 

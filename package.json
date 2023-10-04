@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^1.5.0",
+    "concurrently": "^8.2.1",
     "dotenv": "^16.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -25,7 +26,8 @@
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "json-server": "json-server --port 3002 --watch db.json"
+    "json-server": "json-server --port 3002 --watch db.json",
+    "dev": "concurrently \"json-server --port 3002 --watch db.json\" \"npm start \" "
   },
   "eslintConfig": {
     "extends": [
