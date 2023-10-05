@@ -3,19 +3,23 @@ import { Link, NavLink } from 'react-router-dom';
 import { FaCartShopping } from "react-icons/fa6";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { AiOutlineClose } from "react-icons/ai";
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../context/cartContext';
 import { IProducts } from '../../type/IProducts';
 import { userContext } from '../../context/userContext';
 import useUser from '../../helper/useUser';
+import { useLocation } from 'react-router-dom';
 
 
 const Header = () => {
+    const location = useLocation()
     const { handleLogout } = useUser();
     const { currentUser } = useContext(userContext);
     const { cart }: { cart: IProducts[] } = useContext(CartContext);
     const [showMenu, setShowMenu] = useState(false)
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location.pathname]);
     const toggleMenu = () => {
         setShowMenu(!showMenu);
     };
@@ -33,9 +37,6 @@ const Header = () => {
             </ul>
         </div>
     }
-
-
-
     return (
         <header className='header fixed top-0'>
             <div className='bg-white w-100 d-flex justify-center'>
