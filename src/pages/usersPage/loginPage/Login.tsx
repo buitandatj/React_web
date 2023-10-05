@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { alertLogin, loginFail, loginSuccess } from '../../../constants/Message';
 import { userContext } from '../../../context/userContext';

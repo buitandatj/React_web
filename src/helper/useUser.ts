@@ -4,7 +4,7 @@ import { CartContext } from '../context/cartContext';
 import { logoutSuccess } from '../constants/Message';
 
 const useUser = () => {
-  const { isLoggedIn, setCurrentUser, setIsLoggedIn, setUserData } = useContext(userContext);
+  const { isLoggedIn, setCurrentUser, setIsLoggedIn } = useContext(userContext);
   const { setCart } = useContext(CartContext);
 
   const handleLogout = () => {
@@ -12,7 +12,6 @@ const useUser = () => {
       setCurrentUser(null);
       setIsLoggedIn(false);
       localStorage.removeItem('userId');
-      // setUserData([]);
       setCart([]);
     }
     logoutSuccess();
