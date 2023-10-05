@@ -26,8 +26,8 @@
     "eject": "react-scripts eject",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "json-server": "json-server --port 3002 --watch db.json",
-    "dev": "concurrently \"json-server --port 3002 --watch db.json\" \"npm start \" "
+    "json-server": "node server.ts",
+    "dev": "concurrently \"npm run json-server\" \"npm start \" "
   },
   "eslintConfig": {
     "extends": [

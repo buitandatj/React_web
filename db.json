@@ -15,7 +15,26 @@
       "username": "a",
       "phone": "45354342434",
       "password": "a"
+    },
+    {
+      "id": "0335d3a6-365b-47d1-9008-6058cacc7fa2",
+      "lastname": "nguyen",
+      "firstname": "yen",
+      "username": "aaa",
+      "phone": "r534534324",
+      "password": "a"
     }
   ],
-  "carts": []
+  "carts": [
+    {
+      "title": "Degrey.Madmonks Áo Thun Gân Ba Lỗ - ABL",
+      "descip": "Chất liệu: Thun gân Tici",
+      "image": "https://product.hstatic.net/1000281824/product/2283ebca-fff5-4c29-95a5-2ea8ffbe78d1_d34b2edadb674dafa68f813023afb5a5.jpeg",
+      "price": 190000,
+      "mount": 2,
+      "userId": "0335d3a6-365b-47d1-9008-6058cacc7fa2",
+      "productId": "4",
+      "id": 1
+    }
+  ]
 }
