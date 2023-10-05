@@ -7,3 +7,6 @@ export interface IProducts {
   mount: number;
   userId: string | number;
 }
+export interface ICartItem extends IProducts {
+  productId: number;
+}

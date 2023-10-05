@@ -1,32 +1,43 @@
 import { useContext } from 'react';
 import { CartContext } from '../context/cartContext';
-import { IProducts } from '../type/IProducts';
+import { ICartItem, IProducts } from '../type/IProducts';
 import { addCart, deleteCart } from '../constants/Message';
 import { instanceUser } from '../api/ApiUser';
 
 const useCart = () => {
   const { cart, setCart } = useContext(CartContext);
   const AddToCart = async (product: IProducts, userId: number | undefined) => {
-    const cartItem = cart?.find((item: { id: number }) => item.id === product.id);
+    const cartItem = cart?.find((item: ICartItem) => item.productId === product.id);
     if (cartItem) {
-      const newCart: IProducts[] = cart.map((item: { id: number; mount: number }) => {
-        if (item.id === product.id) {
+      const newCart: ICartItem[] = cart.map((item: ICartItem) => {
+        if (item.productId === product.id) {
           return { ...item, mount: item.mount + 1 };
         } else {
           return item;
         }
       });
+      setCart(newCart);
       try {
-        const newCart = { ...product, mount: cartItem.mount + 1, userId };
+        const newCart = { ...product, mount: cartItem.mount + 1, userId, productId: product.id };
         await instanceUser.put(`carts/${cartItem.id}`, newCart);
       } catch (error) {
         console.error(error);
       }
       setCart(newCart);
     } else {
-      const newProduct = { ...product, mount: 1, userId: userId };
-      const res = await instanceUser.post('carts', newProduct);
-      setCart([...cart, res.data]);
+      const { id, ...p } = product;
+      const newProduct: Partial<ICartItem> = {
+        ...p,
+        mount: 1,
+        userId: userId + '',
+        productId: product.id
+      };
+      try {
+        const res = await instanceUser.post('carts', newProduct);
+        setCart([...cart, res.data]);
+      } catch (error) {
+        console.error(error);
+      }
     }
     addCart();
   };

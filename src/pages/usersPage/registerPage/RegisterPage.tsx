@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { instanceUser } from '../../../api/ApiUser';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate, Link } from 'react-router-dom';
@@ -36,8 +36,17 @@ const RegisterPage = () => {
                 alert(userName);
                 return;
             }
+
+            if (!formUserRegiste.password) {
+                alert(password);
+                return;
+            }
+            if (!formUserRegiste.phone) {
+                alert(phone);
+                return;
+            }
             if (emailUser) {
-                alert(validateForm)
+                validateForm()
                 setFormUserRegiste({
                     id: '',
                     lastname: '',
@@ -48,15 +57,6 @@ const RegisterPage = () => {
                 })
                 return;
             }
-            if (!formUserRegiste.password) {
-                alert(password);
-                return;
-            }
-            if (!formUserRegiste.phone) {
-                alert(phone);
-                return;
-            }
-
             const dataToSubmit = {
                 ...formUserRegiste,
                 id: uuidv4()
@@ -128,7 +128,7 @@ const RegisterPage = () => {
                     onChange={handleChange}
                 />
                 <div className='flex items-center gap-3'>
-                    <Link to='/login'>
+                    <Link to='/form'>
                         <IoMdArrowRoundBack className='text-3xl mt-3 text-[white]' />
                     </Link>
                     <button className="login-button" type='submit' onClick={handleSubmit}>

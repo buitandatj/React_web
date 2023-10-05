@@ -20,7 +20,7 @@ function App() {
     <>
       <Header />
       <div className="App">
-        <ToastContainer transition={Slide} autoClose={1000} />
+        <ToastContainer transition={Slide} autoClose={2000} />
         <Routes>
           <Route path='/' element={<HomePage />} />
           <Route path='products' element={<Products />} />
@@ -31,7 +31,7 @@ function App() {
             <Route path='' element={<CartTable />} />
             <Route path='checkout' element={<Checkout />} />
           </Route>
-          <Route path='login' element={<UserForm />} >
+          <Route path='form' element={<UserForm />} >
             <Route path='' element={<Login />} />
             <Route path='register' element={<RegisterPage />} />
           </Route>

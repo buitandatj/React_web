@@ -1,6 +1,5 @@
 # OVERVIEW
-
-    - Đây tài liệu về ReactJS xây dựng trang web bán hàng
+    - Đây tài liệu về ReactJS và Typescript xây dựng trang web bán hàng
 
 # TECHNICAL
 
@@ -26,12 +25,13 @@
 
 - Xây dựng 1 trang web bán hàng với React (Function Component, Hooks), Typescript
 - Có các chức năng Thêm Sửa Xóa và Search, Filter
-- Sử dụng router, axios
+- Chức năng đăng ký, đăng nhập 
+- Sử dụng router, axios, json-server... 
 - Deploy web bằng vercel
 
 # STEP TO STEP GUIDE TO INSTALL AND RUN
 
-- Tải về từ ('https://github.com/buitandatj/React_web')
+- Clone về từ ('https://github.com/buitandatj/React_web')
 - cd web-react
 - npm install
-- npm start
+- npm run dev

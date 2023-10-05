@@ -64,7 +64,7 @@ const Login = () => {
                 </button>
 
                 <div className='register'>
-                    <Link to='register' className='text-[white]'>Register</Link>
+                    <Link to='register' className='text-[white]'>Đăng ký</Link>
                 </div>
             </form>
         </div>

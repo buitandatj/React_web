@@ -12,7 +12,7 @@ const useUser = () => {
       setCurrentUser(null);
       setIsLoggedIn(false);
       localStorage.removeItem('userId');
-      setUserData([]);
+      // setUserData([]);
       setCart([]);
     }
     logoutSuccess();
