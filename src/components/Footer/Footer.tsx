@@ -1,3 +1,4 @@
+import { AiOutlineMail } from "react-icons/ai";
 import { FiPhoneCall } from "react-icons/fi";
 import { FaFacebookSquare, FaInstagramSquare, FaTwitterSquare } from 'react-icons/fa'
 import { congthuong } from '../../constants/MediaLink';
@@ -27,10 +28,12 @@ const Footer = () => {
                 <div className='sm:w-1/1 sm:pl-10 md:w-1/2 lg:w-1/4 pt-12 col-11'>
                     <p className='font-bold pt-2'>Địa chỉ</p>
                     <p className='font-bold pt-2'>Sài Gòn:</p>
-                    <p>
+                    <li className="address">
                         43 Huỳnh Văn Bánh P.17 Q.Phú Nhuận
+                    </li>
+                    <li className="address">
                         1041 Luỹ Bán Bích P.Tân Thành Q.Tân Phú
-                    </p>
+                    </li>
                     <p className='pt-4'>
                         <span className='font-bold'>Điện thoại:</span> 0336311117
                     </p>
@@ -52,14 +55,20 @@ const Footer = () => {
                 <div className='box-footer sm:w-1/1 sm:pl-10 md:w-1/2  lg:w-1/4 col-11'>
                     <h4 className='title-footer'>Chăm sóc khách hàng</h4>
                     <div className='flex flex-wrap pt-5'>
-                        <FiPhoneCall className=' h-[30px] w-[30px] text-[#9B9B9B] mt-4' />
-                        <p className='text-[#9B9B9B] text-[26px] font-semibold pl-5'>0336311117</p>
-                        <p className='pl-11 underline'>degrey.vn@gmail.com</p>
+                        <div className="flex items-center ">
+                            <FiPhoneCall className=' h-[20px] w-[20px] text-[#9B9B9B]' />
+                            <p className='text-[#9B9B9B] text-[26px] font-semibold pl-5'>0336311117</p>
+                        </div>
+                        <div className="flex items-center mt-3">
+                            <AiOutlineMail className=' h-[20px] w-[20px] text-[#9B9B9B]'/>
+                            <p className='pl-5 underline'>degrey.vn@gmail.com</p>
+                        </div>
+
                     </div>
                     <div>
-                        <p className='title-footer pt-7'>Follow Us</p>
+                        <p className='title-footer mt-10'>Follow Us</p>
                     </div>
-                    <div className='flex gap-3 mt-5 cursor-pointer' >
+                    <div className='flex gap-3 mt-4 cursor-pointer' >
                         <FaFacebookSquare className='bg-white text-[30px]' />
                         <FaInstagramSquare className='bg-white text-[30px]' />
                         <FaTwitterSquare className='bg-white text-[30px]' />
