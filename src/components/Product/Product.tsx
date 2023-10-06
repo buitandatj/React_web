@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { formatPrice } from '../CartItem/CartItem';
 import 'react-toastify/dist/ReactToastify.css';
 import { IProducts } from '../../type/IProducts';
@@ -7,13 +7,23 @@ import { useContext } from 'react'
 import LoadingProduct from '../../loading/LoadingProduct';
 import { LoadingContextType, loadingContext } from '../../context/loadingContext';
 import { userContext } from '../../context/userContext';
+import { requestLogin } from '../../constants/Message';
 
 const Product = ({ product }: { product: IProducts }) => {
+    const history = useNavigate()
     const { loading } = useContext<LoadingContextType>(loadingContext)
-    const { currentUser } = useContext(userContext);
+    const { currentUser, isLoggedIn } = useContext(userContext);
     const { AddToCart } = useCart();
     const { id, title, image, price } = product
-    const userId:number| undefined = currentUser?.id
+    const userId: number | undefined = currentUser?.id
+    const handleAddCart = () => {        
+        if (isLoggedIn && currentUser) {
+            AddToCart(product, userId)
+        } else {
+            requestLogin()
+            history('/form');
+        }
+    }
     return (
         <>
             {
@@ -33,7 +43,7 @@ const Product = ({ product }: { product: IProducts }) => {
                             <p>{formatPrice(price)}</p>
                         </div>
                         <div className='add-cart'>
-                            <button onClick={() => AddToCart(product, userId)}>Thêm vào giỏ</button>
+                            <button onClick={handleAddCart}>Thêm vào giỏ</button>
                             <Link to={`${id}`}><button >Xem chi tiết</button></Link>
                         </div>
                     </div>

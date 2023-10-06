@@ -2,20 +2,30 @@ import React, { useContext } from 'react';
 import { AiFillSecurityScan } from 'react-icons/ai';
 import { FaTruck } from 'react-icons/fa';
 import { ProductContext } from '../../context/productContext'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { formatPrice } from '../CartItem/CartItem'
 import { IProducts } from '../../type/IProducts';
 import useCart from '../../helper/useCart';
 import { userContext } from '../../context/userContext';
+import { requestLogin } from '../../constants/Message';
 const ProductDetail = () => {
+    const history = useNavigate()
     const { AddToCart } = useCart()
     const { id } = useParams();
     const { products }: { products: IProducts[] } = useContext(ProductContext)
-    const { currentUser } = useContext(userContext);
+    const { currentUser, isLoggedIn } = useContext(userContext);
     const userId: number | undefined = currentUser?.id
-    const productItem: IProducts | undefined = products.find((item: { id: number | undefined; }) => {
+    const productItem: IProducts | undefined | any = products.find((item: { id: number | undefined; }) => {
         return item.id === id
     })
+    const handleAddCart = () => {
+        if (isLoggedIn && currentUser) {
+            AddToCart(productItem, userId)
+        } else {
+            requestLogin()
+            history('/form');
+        }
+    }
     return (
         <div className='product-detail'>
             <div className='img-product'>
@@ -28,7 +38,7 @@ const ProductDetail = () => {
                     productItem ? (
                         <>
                             <div className='price-product'>{formatPrice(productItem?.price)}</div>
-                            <div className='btn-add-cart' onClick={() => AddToCart(productItem, userId)}>
+                            <div className='btn-add-cart' onClick={handleAddCart}>
                                 <button>thêm vào giỏ</button>
                             </div>
                         </>

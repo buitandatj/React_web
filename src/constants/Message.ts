@@ -20,6 +20,13 @@ export const register = () => {
 export const logoutSuccess = () => {
   toast.success('Đã đăng xuất');
 };
+export const requestLogin = () => {
+  toast.warning('Đăng nhập để mua hàng');
+};
+export const validateForm = () => {
+  toast.warning('Đã có email này...');
+};
+
 
 export const alertLogin = 'Vui lòng nhập...';
 export const userName = 'vui lòng nhập email';
@@ -27,6 +34,3 @@ export const password = 'vui lòng nhập mật khẩu';
 export const phone = 'vui lòng nhập số điện thoại';
 export const alertCart = 'không có sản phẩm nào...';
 export const nameUser = 'Vui lòng nhập họ và tên';
-export const validateForm =()=>{
-    toast.warning('Đã có email này...')
-} 
