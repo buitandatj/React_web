@@ -12,15 +12,24 @@
 
 - Link: 'https://docs.google.com/spreadsheets/d/1CA7bO-1wN_jkIIZQiTY9Yu5folI2NnGESLbL_x5ECBI/edit?usp=sharing'
 - Thời gian hoàn thành ước tính: 1 tháng
-- Thời gian hoàn thành:
+- Thời gian hoàn thành: 23 ngày
 
 
 # BASED
 - Link: 'https://degrey.vn/collections/tat-ca-san-pham'
+
+
 # TIME SIZE
 
 - 1 người
 
+# LIBRALY AND FRAMEWORK
+- Axios
+- React Router Dom
+- React Toastify
+- JSON-SERVER
+- React Paginate
+- Tailwind
 # TARGET
 
 - Xây dựng 1 trang web bán hàng với React (Function Component, Hooks), Typescript
