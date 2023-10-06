@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { alertLogin, loginFail, loginSuccess } from '../../../constants/Message';
 import { userContext } from '../../../context/userContext';
-import { instanceUser } from '../../../api/ApiUser';
+import { instanceUser } from '../../../api/Api';
 import { CartContext } from '../../../context/cartContext';
 
 const Login = () => {
@@ -10,30 +10,30 @@ const Login = () => {
     const { setCart } = useContext(CartContext)
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const history = useNavigate()
+    const navigate = useNavigate()
 
     const handleLogin = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         if (!username || !password) {
-            alert(alertLogin);
+            alertLogin()
             return;
         }
         let user = userData.find((user) => user.username === username && user.password === password);
         if (user) {
+            setIsLoggedIn(true);
+            setCurrentUser(user);
+            loginSuccess();
+            navigate('/products');
             try {
                 const res = await instanceUser.get(`carts?userId=${user.id}`)
                 const newCart = res.data
                 setCart(newCart)
                 localStorage.setItem('userId', user.id + '');
-                setIsLoggedIn(true);
-                setCurrentUser(user);
-                loginSuccess();
-                setUsername('');
-                setPassword('');
-                history('/products');
+
             } catch (error) {
-                console.error(error);
+                console.error('get product cart by user fail: ', error);
             }
+
         } else {
             loginFail();
             setUsername('');
@@ -64,7 +64,8 @@ const Login = () => {
                 </button>
 
                 <div className='register'>
-                    <Link to='register' className='text-[white]'>Đăng ký</Link>
+                    <Link to='register' className='register-title  
+                    text-[18px]'>Đăng ký</Link>
                 </div>
             </form>
         </div>

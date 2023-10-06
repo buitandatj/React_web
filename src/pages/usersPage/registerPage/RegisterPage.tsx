@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { instanceUser } from '../../../api/ApiUser';
+import { instanceUser } from '../../../api/Api';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate, Link } from 'react-router-dom';
 import { IoMdArrowRoundBack } from 'react-icons/io';
@@ -7,7 +7,7 @@ import { nameUser, password, phone, register, userName, validateForm } from '../
 import { userContext } from '../../../context/userContext';
 const RegisterPage = () => {
     const { userData } = useContext(userContext)
-    const history = useNavigate()
+    const navigate = useNavigate()
     const [formUserRegiste, setFormUserRegiste] = useState({
         id: '',
         lastname: '',
@@ -26,34 +26,35 @@ const RegisterPage = () => {
 
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        let emailUser = userData.find((user) => user.username === formUserRegiste.username);
+        let emailUser = userData?.find((user) => user.username === formUserRegiste.username);
         try {
             if (!formUserRegiste.lastname && !formUserRegiste.firstname) {
-                alert(nameUser);
+                nameUser()
                 return;
             }
             if (!formUserRegiste.username) {
-                alert(userName);
+                userName()
                 return;
             }
 
-            if (!formUserRegiste.password) {
-                alert(password);
+
+            if (!formUserRegiste.phone) {
+                phone()
                 return;
             }
-            if (!formUserRegiste.phone) {
-                alert(phone);
+            if (!formUserRegiste.password) {
+                password()
                 return;
             }
             if (emailUser) {
                 validateForm()
                 setFormUserRegiste({
                     id: '',
-                    lastname: '',
-                    firstname: '',
+                    lastname: formUserRegiste.lastname,
+                    firstname: formUserRegiste.firstname,
                     username: '',
-                    phone: '',
-                    password: ''
+                    phone: formUserRegiste.phone,
+                    password: formUserRegiste.password
                 })
                 return;
             }
@@ -63,30 +64,22 @@ const RegisterPage = () => {
             };
             const res = await instanceUser.post('users', dataToSubmit);
             setFormUserRegiste(res.data);
-            setFormUserRegiste({
-                id: '',
-                lastname: '',
-                firstname: '',
-                username: '',
-                phone: '',
-                password: ''
-            })
-            history('/form');
+            navigate('/form');
             register()
-            window.location.reload()
         } catch (error) {
             console.error(error);
         }
+        window.location.reload()
     };
     return (
-        <div className="login-container">
+        <div className="login-container mt-3">
             <form
                 onSubmit={handleSubmit}
                 className="login-box">
                 <h1 className="login-title">Đăng ký</h1>
                 <div className='flex gap-3'>
                     <input
-                        type="text"
+                        type="email"
                         name='lastname'
                         value={formUserRegiste.lastname}
                         placeholder="Họ..."
@@ -129,10 +122,10 @@ const RegisterPage = () => {
                 />
                 <div className='flex items-center gap-3'>
                     <Link to='/form'>
-                        <IoMdArrowRoundBack className='text-3xl mt-3 text-[white]' />
+                        <IoMdArrowRoundBack className='text-3xl mt-3' />
                     </Link>
                     <button className="login-button" type='submit' onClick={handleSubmit}>
-                        Đăng Ký
+                        Đăng ký
                     </button>
                 </div>
             </form>
