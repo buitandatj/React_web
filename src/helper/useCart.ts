@@ -39,7 +39,11 @@ const useCart = () => {
         console.error(error);
       }
     }
-    addCart();
+    if (cart.length === 0) {
+      addCart();
+    }else{
+      alert('that bai')
+    }
   };
 
   const DeleteItemCart = async (id: number, userId: number | undefined) => {

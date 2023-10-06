@@ -1,7 +1,7 @@
 import axios, { Method } from 'axios';
 import { IUsers } from '../type/IUsers';
 export const instanceUser = axios.create({
-  baseURL: 'http://localhost:3002/'
+  baseURL: 'https://dat-api.vercel.app/'
 });
 
 export const userAxios = async (url: string, method: Method, body?: IUsers) => {
