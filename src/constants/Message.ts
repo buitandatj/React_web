@@ -27,10 +27,21 @@ export const validateForm = () => {
   toast.warning('Đã có email này...');
 };
 
-
-export const alertLogin = 'Vui lòng nhập...';
-export const userName = 'vui lòng nhập email';
-export const password = 'vui lòng nhập mật khẩu';
-export const phone = 'vui lòng nhập số điện thoại';
-export const alertCart = 'không có sản phẩm nào...';
-export const nameUser = 'Vui lòng nhập họ và tên';
+export const alertLogin = () => {
+  toast.warning('Vui lòng nhập...');
+};
+export const userName = ()=>{
+  toast.warning('vui lòng nhập email')
+}
+export const password = ()=>{
+  toast.warning('vui lòng nhập mật khẩu')
+}
+export const phone = ()=>{
+  toast.warning('vui lòng nhập số điện thoại')
+}
+export const alertCart = ()=>{
+  toast.warning('không có sản phẩm nào...')
+}
+export const nameUser = ()=>{
+  toast.warning('Vui lòng nhập họ và tên')
+}

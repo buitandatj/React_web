@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { CartContext } from '../context/cartContext';
 import { ICartItem, IProducts } from '../type/IProducts';
 import { addCart, deleteCart } from '../constants/Message';
-import { instanceUser } from '../api/ApiUser';
+import { instanceUser } from '../api/Api';
 
 const useCart = () => {
   const { cart, setCart } = useContext(CartContext);

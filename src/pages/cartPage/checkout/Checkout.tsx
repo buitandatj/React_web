@@ -1,16 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { IProducts } from '../../../type/IProducts';
 import { CartContext } from '../../../context/cartContext';
-import { formatPrice } from '../../../components/CartItem/CartItem';
 import axios from 'axios';
+import formatPrice from '../../../helper/usePrice';
+
 
 interface IProvinces {
     province_id: string,
     province_name: string,
-}
-interface IDistrict {
-    district_id: string,
-    district_name: string,
 }
 const Checkout = () => {
     const { cart }: { cart: IProducts[] } = useContext(CartContext);

@@ -24,15 +24,15 @@ const Store = () => {
 
                 <p>Hotline: 0336311117</p>
                 <ul>
-                    <li><a href={facebook}>https://www.facebook.com/degrey.saigon</a></li>
+                    <li><a href={facebook} target="_blank" rel="noopener noreferrer">https://www.facebook.com/degrey.saigon</a></li>
                     <hr />
-                    <li><a href={insta}> https://www.instagram.com/degrey.saigon</a></li>
-                    <hr />
-
-                    <li><a href={tiktok}> https://www.tiktok.com/@degrey.vn</a></li>
+                    <li><a href={insta} target="_blank" rel="noopener noreferrer"> https://www.instagram.com/degrey.saigon</a></li>
                     <hr />
 
-                    <li><a href={shoppe}>https://shopee.vn/degrey.vn</a></li>
+                    <li><a href={tiktok} target="_blank" rel="noopener noreferrer"> https://www.tiktok.com/@degrey.vn</a></li>
+                    <hr />
+
+                    <li><a href={shoppe} target="_blank" rel="noopener noreferrer">https://shopee.vn/degrey.vn</a></li>
                     <hr />
 
                 </ul>

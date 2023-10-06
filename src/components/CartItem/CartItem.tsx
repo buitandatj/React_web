@@ -4,11 +4,10 @@ import { IProducts } from '../../type/IProducts';
 import useCart from '../../helper/useCart';
 import { userContext } from '../../context/userContext';
 import { useContext } from 'react';
+import formatPrice from '../../helper/usePrice';
 
 
-export const formatPrice = (price: number) => {
-    return price?.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
-};
+
 const CartItem = ({ item, }: { item: IProducts }) => {
     const { currentUser } = useContext(userContext);
     const { id, title, image, price, mount } = item    

@@ -39,20 +39,25 @@
 
     .add-cart {
         display: flex;
-        gap: 18px;
+        justify-content: center;
+        gap: 10px;
         border-radius: 10px;
         padding: 10px;
 
-        :hover {
-            background-color: $color-boder;
-            color: #000;
-        }
-
         button {
+            background-color: #27292b;
+            border-radius: 5px;
+            color: #ffffff;
             font-size: 0.8rem;
             cursor: pointer;
-            padding: 4px;
+            padding: 7px;
             border: 1px solid $color-boder;
+            transition: background-color 0.7s;
+
+            &:hover {
+                background-color: #ffffff;
+                color: #000;
+            }
         }
     }
 }
@@ -61,18 +66,21 @@
     .product {
         width: 100%;
         align-items: center;
-        border-bottom: 1px solid  rgb(66, 60, 60);
+        border-bottom: 1px solid rgb(66, 60, 60);
+
         .title-name {
             margin: 5px;
             font-size: 1.2rem;
         }
+
         .price {
             font-size: 1.4rem;
         }
+
         .add-cart {
             justify-content: center;
             margin-bottom: 20px;
-    
+
             button {
                 font-size: 1rem;
                 padding: 10px;

@@ -3,7 +3,9 @@ import { IProducts } from '../type/IProducts';
 export const instance = axios.create({
   baseURL: process.env.REACT_APP_API_URL
 });
-
+export const instanceUser = axios.create({
+  baseURL: process.env.REACT_APP_API_URL
+});
 export const myAxios = async (url: string, method: Method, param?: object, body?: IProducts) => {
   try {
     let data;

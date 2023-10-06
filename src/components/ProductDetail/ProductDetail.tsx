@@ -3,13 +3,13 @@ import { AiFillSecurityScan } from 'react-icons/ai';
 import { FaTruck } from 'react-icons/fa';
 import { ProductContext } from '../../context/productContext'
 import { useNavigate, useParams } from 'react-router-dom';
-import { formatPrice } from '../CartItem/CartItem'
 import { IProducts } from '../../type/IProducts';
 import useCart from '../../helper/useCart';
 import { userContext } from '../../context/userContext';
 import { requestLogin } from '../../constants/Message';
+import formatPrice from '../../helper/usePrice';
 const ProductDetail = () => {
-    const history = useNavigate()
+    const navigate = useNavigate()
     const { AddToCart } = useCart()
     const { id } = useParams();
     const { products }: { products: IProducts[] } = useContext(ProductContext)
@@ -23,7 +23,7 @@ const ProductDetail = () => {
             AddToCart(productItem, userId)
         } else {
             requestLogin()
-            history('/form');
+            navigate('/form');
         }
     }
     return (

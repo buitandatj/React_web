@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { IUsers } from '../type/IUsers';
-import { instanceUser } from '../api/ApiUser';
+import { instanceUser } from '../api/Api';
 interface IUser {
     userData: IUsers[];
     setUserData: React.Dispatch<React.SetStateAction<IUsers[]>>;

@@ -1,7 +1,7 @@
 import React, { useState, createContext, useEffect } from 'react';
 import { ICart } from '../type/ICart';
 import { IProducts } from '../type/IProducts';
-import { instanceUser } from '../api/ApiUser';
+import { instanceUser } from '../api/Api';
 
 export const CartContext = createContext<ICart>({
   cart: [],

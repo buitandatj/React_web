@@ -64,14 +64,14 @@ const Header = () => {
                                 <FaCartShopping className='h-[27px] w-[27px] icon-cart' />
                                 <div className='total-cart'>
                                     <p className='length'>
-                                        {cart?.length}
+                                        {cart.length}
                                     </p>
                                 </div>
                             </Link>
                         </div>
                         {currentUser ? (
                             <div className='right-header-mobile flex items-center'>
-                                <div className='nameUser'> Hello {currentUser.lastname} !</div>
+                                <div className='nameUser'>chào {currentUser.lastname} !</div>
                                 <Link to='form' onClick={handleLogout}><div className='logout'>Đăng xuất</div></Link>
                             </div>
                         ) : (

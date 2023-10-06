@@ -1,16 +1,17 @@
 import React, { useContext } from 'react';
 import { IProducts } from '../../../type/IProducts';
 import { CartContext } from '../../../context/cartContext';
-import CartItem, { formatPrice } from '../../../components/CartItem/CartItem';
+import CartItem from '../../../components/CartItem/CartItem';
 import { Link } from 'react-router-dom';
 import { alertCart } from '../../../constants/Message';
+import formatPrice from '../../../helper/usePrice';
 
 const CartTable = () => {
     const { cart }: { cart: IProducts[] } = useContext(CartContext);
     const { total }: { total: number } = useContext(CartContext);
     const handleCheckout = () => {
         if (cart.length === 0) {
-            alert(alertCart)
+            alertCart()
         }
     }
     return (
