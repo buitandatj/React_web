@@ -10,7 +10,6 @@ import { userContext } from '../../context/userContext';
 import useUser from '../../helper/useUser';
 import { useLocation } from 'react-router-dom';
 
-
 const Header = () => {
     const location = useLocation()
     const { handleLogout } = useUser();
