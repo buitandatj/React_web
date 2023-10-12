@@ -26,7 +26,7 @@ const Footer = () => {
                     </a>
                 </div>
                 <div className='sm:w-1/1 sm:pl-10 md:w-1/2 lg:w-1/4 pt-12 col-11'>
-                    <p className='font-bold pt-2'>Địa chỉ</p>
+                    <p className='font-bold pt-4'>Địa chỉ</p>
                     <p className='font-bold pt-2'>Sài Gòn:</p>
                     <li className="address">
                         43 Huỳnh Văn Bánh P.17 Q.Phú Nhuận
@@ -66,7 +66,7 @@ const Footer = () => {
 
                     </div>
                     <div>
-                        <p className='title-footer mt-10'>Follow Us</p>
+                        <p className='title-footer mt-10 '>Follow Us</p>
                     </div>
                     <div className='flex gap-3 mt-4 cursor-pointer' >
                         <FaFacebookSquare className='bg-white text-[30px]' />

@@ -1,5 +1,8 @@
 @import '../Search/style.scss';
 
+
+$color-bg:#27292b;
+
 .filter {
     margin-top: 40px;
     position: relative;
@@ -22,17 +25,25 @@
             border: 1px solid $color-boder;
             width: 150px;
             cursor: pointer;
+            transition: background-color 0.7s;
+
+            &:hover {
+                background-color: $color-bg;
+                color: #ffffff;
+
+                .list-arrange {
+                    display: block;
+                    background-color: #ffffff;
+                    color: $color-bg;
+                }
+            }
 
             .icon-toggle {
                 color: $color-boder;
             }
         }
 
-        :hover {
-            .list-arrange {
-                display: block;
-            }
-        }
+
     }
 
     .list-arrange {
@@ -49,7 +60,7 @@
 
         div {
             cursor: pointer;
-            border-bottom: 2px solid #27292b;
+            border-bottom: 2px solid $color-bg;
             padding: 3px;
 
         }
@@ -59,7 +70,7 @@
         }
 
         :hover {
-            background-color: rgb(121, 124, 124);
+            background-color: $color-bg;
             color: white;
         }
     }

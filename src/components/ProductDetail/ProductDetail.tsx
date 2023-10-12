@@ -33,7 +33,6 @@ const ProductDetail = () => {
             </div>
             <div className='product-left'>
                 <h2 className='title-product'>{productItem?.title}</h2>
-
                 {
                     productItem ? (
                         <>

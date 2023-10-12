@@ -27,7 +27,6 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
         try {
           const res = await instanceUser.get(`carts?userId=${userId}`)
           const carts = res.data
-          console.log(carts);
           setCart(carts)
         } catch (error) {
           console.log(error);

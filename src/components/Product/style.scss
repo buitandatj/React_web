@@ -45,9 +45,9 @@
         padding: 10px;
 
         button {
-            background-color: #27292b;
+            background-color: #ffffff;
+            color: #000;
             border-radius: 5px;
-            color: #ffffff;
             font-size: 0.8rem;
             cursor: pointer;
             padding: 7px;
@@ -55,8 +55,8 @@
             transition: background-color 0.7s;
 
             &:hover {
-                background-color: #ffffff;
-                color: #000;
+                background-color: #27292b;
+                color: #ffffff;
             }
         }
     }

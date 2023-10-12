@@ -62,7 +62,7 @@ const Header = () => {
                             <Link to="/cart " className='flex'>
                                 <FaCartShopping className='h-[27px] w-[27px] icon-cart' />
                                 <div className='total-cart'>
-                                    <p className='length'>
+                                    <p>
                                         {cart.length}
                                     </p>
                                 </div>
