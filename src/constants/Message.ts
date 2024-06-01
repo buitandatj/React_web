@@ -27,9 +27,7 @@ export const validateForm = () => {
   toast.warning('Đã có email này...');
 };
 
-export const alertLogin = () => {
-  toast.warning('Vui lòng nhập...');
-};
+
 export const userName = ()=>{
   toast.warning('vui lòng nhập email')
 }

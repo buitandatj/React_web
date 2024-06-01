@@ -1,23 +1,26 @@
 import { useContext, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { alertLogin, loginFail, loginSuccess } from '../../../constants/Message';
+import { loginSuccess } from '../../../constants/Message';
 import { userContext } from '../../../context/userContext';
 import { instanceUser } from '../../../api/Api';
 import { CartContext } from '../../../context/cartContext';
+import { useForm } from 'react-hook-form';
+
 
 const Login = () => {
     const { userData, setIsLoggedIn, setCurrentUser } = useContext(userContext)
     const { setCart } = useContext(CartContext)
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const navigate = useNavigate()
 
-    const handleLogin = async (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
-        if (!username || !password) {
-            alertLogin()
-            return;
+    const navigate = useNavigate()
+    const { register, handleSubmit, setError, formState: { errors }, reset, watch } = useForm({
+        defaultValues: {
+            username: '',
+            password: '',
         }
+    });
+    const handleLogin: any = async () => {
+        const { username, password } = watch()
+
         let user = userData.find((user) => user.username === username && user.password === password);
         if (user) {
             setIsLoggedIn(true);
@@ -34,31 +37,28 @@ const Login = () => {
                 console.error('get product cart by user fail: ', error);
             }
 
-        } else {
-            loginFail();
-            setUsername('');
-            setPassword('');
-        }
+        } 
     };
     return (
         <div className="login-container">
-            <form onSubmit={handleLogin
+            <form onSubmit={handleSubmit(handleLogin)
             } className="login-box">
                 <h1 className="login-title">Đăng nhập</h1>
                 <input
                     type="text"
-                    placeholder="Email"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="username"
+
+                    {...register('username', { required: "Username is required" })}
                     className="login-input"
                 />
+                {errors.username && <span>{errors.username.message}</span>}
                 <input
                     type="password"
                     placeholder="Mật khẩu"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    {...register('password', { required: "Password is required" })}
                     className="login-input"
                 />
+                {errors.password && <span>{errors.password.message}</span>}
                 <button onClick={handleLogin} className="login-button" type='submit'>
                     Đăng nhập
                 </button>

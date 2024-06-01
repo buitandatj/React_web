@@ -1,130 +1,107 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { instanceUser } from '../../../api/Api';
 import { v4 as uuidv4 } from 'uuid';
 import { useNavigate, Link } from 'react-router-dom';
 import { IoMdArrowRoundBack } from 'react-icons/io';
-import { nameUser, password, phone, register, userName, validateForm } from '../../../constants/Message';
+
 import { userContext } from '../../../context/userContext';
+
+type FormValues = {
+    lastname: string;
+    firstname: string;
+    username: string;
+    phone: string;
+    password: string;
+};
+
 const RegisterPage = () => {
-    const { userData } = useContext(userContext)
-    const navigate = useNavigate()
-    const [formUserRegiste, setFormUserRegiste] = useState({
-        id: '',
-        lastname: '',
-        firstname: '',
-        username: '',
-        phone: '',
-        password: ''
+    const { userData } = useContext(userContext);
+    const navigate = useNavigate();
+    const { register, handleSubmit, setError, formState: { errors }, reset } = useForm<FormValues>({
+        defaultValues: {
+            lastname: '',
+            firstname: '',
+            username: '',
+            phone: '',
+            password: '',
+
+        }
     });
-    const handleChange = (e: { target: { name: string; value: string; }; }) => {
-        const { name, value } = e.target;
-        setFormUserRegiste({
-            ...formUserRegiste,
-            [name]: value
-        });
-    };
 
-    const handleSubmit = async (e: { preventDefault: () => void; }) => {
-        e.preventDefault();
-        let emailUser = userData?.find((user) => user.username === formUserRegiste.username);
+    const onSubmit: SubmitHandler<FormValues> = async (data) => {
+        let emailUser = userData?.find((user) => user.username === data.username);
         try {
-            if (!formUserRegiste.lastname && !formUserRegiste.firstname) {
-                nameUser()
-                return;
-            }
-            if (!formUserRegiste.username) {
-                userName()
-                return;
-            }
-
-
-            if (!formUserRegiste.phone) {
-                phone()
-                return;
-            }
-            if (!formUserRegiste.password) {
-                password()
-                return;
-            }
             if (emailUser) {
-                validateForm()
-                setFormUserRegiste({
-                    id: '',
-                    lastname: formUserRegiste.lastname,
-                    firstname: formUserRegiste.firstname,
-                    username: '',
-                    phone: formUserRegiste.phone,
-                    password: formUserRegiste.password
-                })
+                setError("username", { type: "manual", message: "Username already exists" });
                 return;
             }
             const dataToSubmit = {
-                ...formUserRegiste,
+                ...data,
                 id: uuidv4()
             };
-            const res = await instanceUser.post('users', dataToSubmit);
-            setFormUserRegiste(res.data);
+            console.log(dataToSubmit);
+            
+            await instanceUser.post('users', dataToSubmit);
+            reset();
             navigate('/form');
-            register()
+
         } catch (error) {
             console.error(error);
         }
-        window.location.reload()
+
     };
+
     return (
         <div className="login-container mt-3">
-            <form
-                onSubmit={handleSubmit}
-                className="login-box">
+            <form onSubmit={handleSubmit(onSubmit)} className="login-box">
                 <h1 className="login-title">Đăng ký</h1>
                 <div className='flex gap-3'>
                     <input
-                        type="email"
-                        name='lastname'
-                        value={formUserRegiste.lastname}
+                        type="text"
+                        {...register('lastname', { required: "Họ is required" })}
                         placeholder="Họ..."
                         className="login-input"
-                        onChange={handleChange}
                     />
+                    {errors.lastname && <span>{errors.lastname.message}</span>}
 
                     <input
                         type="text"
-                        name='firstname'
-                        value={formUserRegiste.firstname}
+                        {...register('firstname', { required: "Tên is required" })}
                         placeholder="Tên..."
                         className="login-input"
-                        onChange={handleChange}
                     />
+                    {errors.firstname && <span>{errors.firstname.message}</span>}
                 </div>
                 <input
                     type="text"
-                    name='username'
-                    value={formUserRegiste.username}
+                    {...register('username', { required: "Email is required" })}
                     placeholder="Email"
                     className="login-input"
-                    onChange={handleChange}
                 />
+                {errors.username && <span>{errors.username.message}</span>}
+
                 <input
                     type="text"
+                    {...register('phone', { required: "Số điện thoại is required" })}
                     placeholder="Số điện thoại"
                     className="login-input"
-                    name="phone"
-                    value={formUserRegiste.phone}
-                    onChange={handleChange}
                 />
+                {errors.phone && <span>{errors.phone.message}</span>}
+
                 <input
                     type="password"
+                    {...register('password', { required: "Mật khẩu is required" })}
                     placeholder="Mật khẩu"
                     className="login-input"
-                    name="password"
-                    value={formUserRegiste.password}
-                    onChange={handleChange}
                 />
+                {errors.password && <span>{errors.password.message}</span>}
+
                 <div className='flex items-center gap-3'>
                     <Link to='/form'>
                         <IoMdArrowRoundBack className='text-3xl mt-3' />
                     </Link>
-                    <button className="login-button" type='submit' onClick={handleSubmit}>
+                    <button className="login-button" type='submit'>
                         Đăng ký
                     </button>
                 </div>
